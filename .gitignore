@@ -1,0 +1,19 @@
+# Node/Vite
+node_modules/
+dist/
+*.log
+.DS_Store
+
+# Env
+.env
+.env.local
+
+# Tooling
+.vscode/
+.vercel/
+.netlify/
+coverage/
+/.cache/
+
+# OS
+Thumbs.db

@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+@keyframes slide-in {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes shine-sweep {
+  0% { transform: translateX(-150%) skewX(-12deg); }
+  100% { transform: translateX(150%) skewX(-12deg); }
+}
+
+.shine { opacity: 0; }
+.group:hover .shine { opacity: 1; animation: shine-sweep 1.2s ease-in-out; }
+
+.clamp-3-5 {
+  line-height: 1.25;
+  max-height: calc(1.25em * 3.5);
+  overflow: hidden;
+}
+
+.clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Carrusel responsive */
+.carousel-slide { padding-left: 12px; padding-right: 12px; }
+.carousel-media { background: #fff; border-radius: 12px; overflow: hidden; position: relative; z-index: 0; margin-left: auto; margin-right: auto; width: 100%; max-width: 100vw; }
+.carousel-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.carousel-content { position: relative; z-index: 20; margin-left: auto; margin-right: auto; }
+
+@media (max-width: 480px) {
+  .carousel-media { height: 220px; }
+  .carousel-img { object-fit: contain; }
+}
+
+@media (max-width: 360px) {
+  .carousel-media { height: 190px; }
+}
+
+@media (min-width: 768px) {
+  .carousel-media { height: calc(22rem - 5px); }
+}
