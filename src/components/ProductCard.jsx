@@ -36,11 +36,19 @@ export default function ComboCard({ producto, imagenSrc, onAdd }) {
       {/* Imagen con "AL TOKE" incluido en el diseño - 65% */}
       <div className="w-[60%] sm:w-[65%] h-full relative overflow-hidden rounded-l-lg bg-gray-800">
         {imagenSrc
-          ? <img 
-              src={imagenSrc} 
-              alt={producto.nombre} 
-              className="w-full h-full object-contain sm:object-cover img"
-            />
+          ? (() => {
+              const primary = imagenSrc.replace(/\.(png|jpe?g)$/i, '.webp')
+              return (
+                <img
+                  src={primary}
+                  alt={producto.nombre}
+                  className="w-full h-full object-cover img"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => { e.currentTarget.src = imagenSrc }}
+                />
+              )
+            })()
           : <div className="w-full h-full bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center text-3xl">
               🍔
             </div>

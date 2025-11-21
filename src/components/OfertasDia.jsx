@@ -95,19 +95,30 @@ export default function OfertasDia() {
                 <div className="slide-content">
                   <div className="image-section">
                     <div className="image-container-fixed">
-                      {getProdImagenSrc(prod) ? (
-                        <img 
-                          src={getProdImagenSrc(prod)} 
-                          alt={prod.nombre} 
-                          className="standardized-image imagencarrucel"
-                          loading="lazy"
-                          onError={(e) => {
-                            e.target.style.display = 'none'
-                            const placeholder = e.target.nextElementSibling
-                            if (placeholder) placeholder.style.display = 'flex'
-                          }}
-                        />
-                      ) : null}
+                      {getProdImagenSrc(prod) ? (() => {
+                        const original = getProdImagenSrc(prod)
+                        const primary = String(original).replace(/\.(png|jpe?g)$/i, '.webp')
+                        return (
+                          <img 
+                            src={idx === 0 ? primary : primary}
+                            alt={prod.nombre} 
+                            className="standardized-image imagencarrucel"
+                            loading={idx === 0 ? 'eager' : 'lazy'}
+                            decoding="async"
+                            fetchpriority={idx === 0 ? 'high' : 'low'}
+                            onError={(e) => {
+                              const cur = e.currentTarget.src
+                              if (/\.webp($|\?)/i.test(cur)) {
+                                e.currentTarget.src = original
+                                return
+                              }
+                              e.currentTarget.style.display = 'none'
+                              const placeholder = e.currentTarget.nextElementSibling
+                              if (placeholder) placeholder.style.display = 'flex'
+                            }}
+                          />
+                        )
+                      })() : null}
                       <div className="image-placeholder-fixed">
                         📦
                       </div>

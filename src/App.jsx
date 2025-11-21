@@ -354,7 +354,7 @@ export default function TiendaComida() {
 
         
 
-        <div ref={cardsRef} className="mt-6 mx-auto max-w-[420px] sm:max-w-none grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-[3px]">
+        <div ref={cardsRef} className="mt-6 mx-auto max-w-none grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-[3px]">
           {productosFiltrados.map(producto => (
             <ProductCard
               key={producto.id}
