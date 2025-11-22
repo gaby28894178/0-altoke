@@ -180,12 +180,15 @@ export default function TiendaComida() {
       return
     }
     const numeroWhatsApp = import.meta.env.VITE_WHATSAPP_NUMBER || '5491123339962'
-    const replyText = String(import.meta.env.VITE_WHATSAPP_REPLY || '')
     const attentionDays = String(diasAtencion || '')
-    const descuentoText = String(import.meta.env.VITE_DESCUENTO || '')
-    const ofertaText = String(import.meta.env.VITE_OFERTA || '')
+    const descuentoNum = Number(String(import.meta.env.VITE_DESCUENTO ?? '0').replace(/[^0-9.]/g,'')) || 0
     const base = construirMensaje()
-    const extras = `\n🎯 Descuento: ${descuentoText}\n🔥 Precio Oferta: $${ofertaText}\n📅 Fecha del Pedido: ${new Date().toLocaleDateString()}\n⏰ Días de Atención: ${attentionDays}\n\n${replyText}`
+    const hayDescuento = carrito.some(it => aplicaDescuentoItem(it)) && descuentoNum > 0
+    const totalConDescuento = calcularTotal()
+    const totalSinDescuento = carrito.reduce((t, it) => t + precioUnitarioBase(it) * it.cantidad, 0)
+    const extras = hayDescuento
+      ? `\n💸 Precio original: $${totalSinDescuento}\n🎯 Descuento aplicado: -${descuentoNum}%\n💰 TOTAL con descuento: $${totalConDescuento}\n📅 Fecha del Pedido: ${new Date().toLocaleDateString()}\n⏰ Días de Atención: ${attentionDays}`
+      : `\n📅 Fecha del Pedido: ${new Date().toLocaleDateString()}\n⏰ Días de Atención: ${attentionDays}`
     const mensaje = `${base}\n${extras}`
     abrirWhatsAppWeb(numeroWhatsApp, mensaje, false)
     setMostrarPedidoModal(false)
