@@ -32,7 +32,7 @@ export default function OfertasDia() {
   const ofertaMinPrecio = Number(String(import.meta.env.VITE_OFERTA ?? '0').replace(/[^0-9.]/g,'')) || 0
 
   useEffect(() => {
-    fetch('/combos/productos.json')
+    fetch('/config/productos.json')
       .then(r => r.json())
       .then(setProductos)
       .catch(() => setProductos([]))

@@ -56,7 +56,7 @@ export default function TiendaComida() {
   }, [temaOscuro])
 
   useEffect(() => {
-    fetch('/combos/productos.json')
+    fetch('/config/productos.json')
       .then(r => r.json())
       .then(setProductos)
       .catch(() => setProductos([]))
