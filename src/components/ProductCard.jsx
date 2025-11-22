@@ -93,7 +93,7 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
                 <span className="block text-center bg-black text-yellow-300 font-extrabold text-base px-2 py-0.5 rounded">${precioFinal}</span>
               </div>
             ) : (
-              <span className="block text-center bg-green-500 text-white font-bold text-base px-2 py-0.5 rounded">${basePrecio}</span>
+              <span className="block text-center bg-green-700 text-white font-bold text-base px-2 py-0.5 rounded">${basePrecio}</span>
             )}
           </div>
         </div>
@@ -109,6 +109,7 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
               rounded
               hover:from-orange-600 hover:to-red-600
               text-[11px]
+              focus:outline-none focus:ring-2 focus:ring-orange-300
             "
           >
             <FiShoppingCart size={12} />

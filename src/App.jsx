@@ -173,7 +173,7 @@ export default function TiendaComida() {
       <nav className="bg-gradient-to-r from-orange-500 to-red-500 dark:from-gray-800 dark:to-gray-700 text-white shadow-lg sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4">
             <div className="flex justify-between items-center h-16">
-              <button onClick={() => setMenuAbierto(!menuAbierto)} className="p-2 hover:bg-white/20 rounded-lg transition-colors">
+              <button onClick={() => setMenuAbierto(!menuAbierto)} className="p-2 hover:bg-white/20 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-white/40" aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}>
                 {menuAbierto ? <FiX size={28} /> : <FiMenu size={28} />}
               </button>
 
@@ -200,7 +200,7 @@ export default function TiendaComida() {
               <button onClick={() => setTemaOscuro(!temaOscuro)} className="p-2 hover:bg-white/20 rounded-lg transition-colors" aria-label="Cambiar tema">
                 {temaOscuro ? <FiSun size={24} /> : <FiMoon size={24} />}
               </button>
-              <button onClick={() => setMostrarCarrito(!mostrarCarrito)} className="relative p-2 hover:bg-white/20 rounded-lg transition-colors">
+              <button onClick={() => setMostrarCarrito(!mostrarCarrito)} className="relative p-2 hover:bg-white/20 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-white/40" aria-label={mostrarCarrito ? 'Cerrar carrito' : 'Abrir carrito'}>
                 <FiShoppingCart size={28} />
                 {cantidadItems > 0 && (
                   <span className="absolute -top-1 -right-1 bg-yellow-400 text-red-600 font-bold text-xs w-6 h-6 rounded-full flex items-center justify-center animate-pulse">
@@ -349,6 +349,7 @@ export default function TiendaComida() {
         </div>
       )}
 
+      <main role="main" id="main-content">
       <div className="max-w-7xl mx-auto sm:px-4 px-2 py-3">
         {verOfertas && !busqueda.trim() && <OfertasDia />}
 
@@ -366,9 +367,10 @@ export default function TiendaComida() {
           ))}
         </div>
       </div>
+      </main>
 
       {!mostrarCarrito && carrito.length > 0 && (
-        <button onClick={() => setMostrarCarrito(true)} className="fixed bottom-6 right-6 bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all z-30">
+        <button onClick={() => setMostrarCarrito(true)} className="fixed bottom-6 right-6 bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all z-30 focus:outline-none focus:ring-2 focus:ring-orange-300" aria-label="Abrir carrito">
           <div className="relative">
             <FiShoppingCart size={32} />
             <span className="absolute -top-2 -right-2 bg-yellow-400 text-red-600 font-bold text-sm w-6 h-6 rounded-full flex items-center justify-center">
