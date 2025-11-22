@@ -45,12 +45,13 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
               if (isLocal) {
                 const m = imagenSrc.match(/\/combos\/(.+?)\.(png|jpe?g|webp)$/i)
                 const base = m ? m[1] : imagenSrc.replace(/^\/combos\//, '').replace(/\.(png|jpe?g|webp)$/i, '')
-                const w424 = `/combos/${base}_424.webp`
-                const w640 = `/combos/${base}_640.webp`
-                const w800 = `/combos/${base}_800.webp`
-                const j424 = `/combos/${base}_424.jpg`
-                const j640 = `/combos/${base}_640.jpg`
-                const j800 = `/combos/${base}_800.jpg`
+                const safe = base.replace(/\s/g, '%20')
+                const w424 = `/combos/${safe}_424.webp`
+                const w640 = `/combos/${safe}_640.webp`
+                const w800 = `/combos/${safe}_800.webp`
+                const j424 = `/combos/${safe}_424.jpg`
+                const j640 = `/combos/${safe}_640.jpg`
+                const j800 = `/combos/${safe}_800.jpg`
                 const fallback = j640
                 return (
                   <picture>

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { FiShoppingCart, FiMenu, FiX, FiPlus, FiMinus, FiTrash2, FiSend, FiHome, FiPhone, FiMoon, FiSun, FiSearch } from 'react-icons/fi'
+import { FiShoppingCart, FiMenu, FiX, FiPlus, FiMinus, FiTrash2, FiSend, FiHome, FiPhone, FiMoon, FiSun, FiSearch, FiLoader } from 'react-icons/fi'
 import { GiHamburger } from 'react-icons/gi'
 import { TbToolsKitchen2 } from 'react-icons/tb'
 import ProductCard from './components/ProductCard'
@@ -11,11 +11,15 @@ export default function TiendaComida() {
   const [categoriaActiva, setCategoriaActiva] = useState('todos')
   const [mostrarCarrito, setMostrarCarrito] = useState(false)
   const [mostrarPedidoModal, setMostrarPedidoModal] = useState(false)
+  const [enviandoPedido, setEnviandoPedido] = useState(false)
   const [clienteNombre, setClienteNombre] = useState('')
   const [clienteTelefono, setClienteTelefono] = useState('')
   const [mostrarHorarioModal, setMostrarHorarioModal] = useState(false)
   const [mostrarContactoModal, setMostrarContactoModal] = useState(false)
+  const [enviandoConsulta, setEnviandoConsulta] = useState(false)
   const [consultaMsg, setConsultaMsg] = useState('hola me gustaria hacer un pedido ya q su comida es muy rica')
+  const [toastMsg, setToastMsg] = useState('')
+  const [toastType, setToastType] = useState('success')
   const [verOfertas, setVerOfertas] = useState(true)
   const cardsRef = useRef(null)
   const [temaOscuro, setTemaOscuro] = useState(() => {
@@ -27,8 +31,14 @@ export default function TiendaComida() {
   const [logoOk, setLogoOk] = useState(true)
   const descuento = Number(String(import.meta.env.VITE_DESCUENTO ?? '0').replace(/[^0-9.]/g, '')) || 0
   const ofertaLimite = Number(String(import.meta.env.VITE_OFERTA ?? '0').replace(/[^0-9.]/g, '')) || 0
-  const telefonoContacto = String(import.meta.env.VITE_CONTACT_PHONE ?? '')
+  const telefonoContacto = String(import.meta.env.VITE_CONTACT_PHONE ?? '+54 9 11 2333-9962')
   const diasAtencion = String(import.meta.env.VITE_ATTENTION_DAYS ?? '')
+
+  const showToast = (msg, type = 'success') => {
+    setToastMsg(msg)
+    setToastType(type)
+    setTimeout(() => setToastMsg(''), 2500)
+  }
 
   const getImagenSrc = (img) => {
     if (!img || typeof img !== 'string') return null
@@ -37,7 +47,7 @@ export default function TiendaComida() {
     if (!isFile) return null
     const clean = img.replace(/^\.\//, '').replace(/^\//, '')
     const withBase = clean.startsWith('combos/') ? clean : `combos/${clean}`
-    return `/${withBase}`
+    return `/${withBase.replace(/\s/g, '%20')}`
   }
 
   useEffect(() => {
@@ -134,11 +144,18 @@ export default function TiendaComida() {
     setMostrarPedidoModal(true)
   }
 
+  const abrirWhatsAppWeb = (numero, texto) => {
+    const phone = String(numero || '').replace(/[^0-9]/g, '')
+    const encoded = encodeURIComponent(String(texto || ''))
+    const url = `https://web.whatsapp.com/send?phone=${phone}&text=${encoded}`
+    window.open(url, '_blank')
+  }
+
   const enviarWhatsAppConsulta = () => {
-    const numeroWhatsApp = import.meta.env.VITE_WHATSAPP_NUMBER || '549000000000'
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(consultaMsg || '')}`
-    window.open(url, '_blank', 'noopener')
+    const numeroWhatsApp = import.meta.env.VITE_WHATSAPP_NUMBER || '5491123339962'
+    abrirWhatsAppWeb(numeroWhatsApp, consultaMsg || '')
     setMostrarContactoModal(false)
+    showToast('WhatsApp abierto', 'success')
   }
 
   const copiarMensaje = async () => {
@@ -151,12 +168,11 @@ export default function TiendaComida() {
       alert('¡El carrito está vacío!')
       return
     }
-    const numeroWhatsApp = import.meta.env.VITE_WHATSAPP_NUMBER || '549000000000'
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(construirMensaje())}`
-    window.open(url, '_blank', 'noopener')
-    setCarrito([])
-    setMostrarCarrito(false)
+    const numeroWhatsApp = import.meta.env.VITE_WHATSAPP_NUMBER || '5491123339962'
+    const mensaje = construirMensaje()
+    abrirWhatsAppWeb(numeroWhatsApp, mensaje)
     setMostrarPedidoModal(false)
+    showToast('WhatsApp abierto para enviar pedido', 'success')
   }
 
   const productosFiltrados = useMemo(() => {
@@ -407,7 +423,10 @@ export default function TiendaComida() {
             </div>
             <div className="p-4 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-2">
               <button onClick={() => setMostrarContactoModal(false)} className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100">Cancelar</button>
-              <button onClick={enviarWhatsAppConsulta} className="px-4 py-2 rounded-lg bg-green-600 text-white">Enviar</button>
+              <button onClick={enviarWhatsAppConsulta} disabled={enviandoConsulta} className="px-4 py-2 rounded-lg bg-green-600 text-white flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
+                {enviandoConsulta ? <FiLoader className="animate-spin" size={18} /> : <FiSend size={18} />}
+                {enviandoConsulta ? 'Enviando...' : 'Enviar'}
+              </button>
             </div>
           </div>
         </div>
@@ -420,6 +439,7 @@ export default function TiendaComida() {
               <p className="text-white/80 text-sm">Completa tus datos y revisa el mensaje</p>
             </div>
             <div className="p-4 space-y-4 max-h-[70vh] overflow-y-auto">
+              <p className="text-sm text-gray-600 dark:text-gray-300"><span className="font-semibold">WhatsApp destino:</span> {String(import.meta.env.VITE_WHATSAPP_NUMBER || '5491123339962')}</p>
               <div>
                 <label className="block text-sm font-semibold text-gray-700 dark:text-gray-100 mb-1">Nombre</label>
                 <input type="text" value={clienteNombre} onChange={(e) => setClienteNombre(e.target.value)} placeholder="Tu nombre" className="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500" />
@@ -432,7 +452,10 @@ export default function TiendaComida() {
                 <button onClick={copiarMensaje} className="px-4 py-2 rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 font-semibold">Copiar</button>
                 <div className="flex items-center gap-3">
                   <button onClick={() => setMostrarPedidoModal(false)} className="px-4 py-2 rounded-lg bg-red-500 text-white font-semibold">Cancelar</button>
-                  <button onClick={enviarPedidoFinal} className="px-4 py-2 rounded-lg bg-green-600 text-white font-semibold">Abrir WhatsApp</button>
+                  <button onClick={enviarPedidoFinal} disabled={enviandoPedido} className="px-4 py-2 rounded-lg bg-green-600 text-white font-semibold flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
+                    {enviandoPedido ? <FiLoader className="animate-spin" size={18} /> : <FiSend size={18} />}
+                    {enviandoPedido ? 'Enviando...' : 'Enviar pedido'}
+                  </button>
                 </div>
               </div>
               <div className="bg-gray-50 dark:bg-gray-700 rounded-lg p-3 border border-gray-200 dark:border-gray-700">
@@ -440,6 +463,13 @@ export default function TiendaComida() {
                 <pre className="whitespace-pre-wrap text-sm text-gray-800 dark:text-gray-100">{construirMensaje()}</pre>
               </div>
             </div>
+          </div>
+        </div>
+      )}
+      {toastMsg && (
+        <div className={`fixed bottom-0 left-0 right-0 z-50 w-full ${toastType === 'success' ? 'bg-green-600' : 'bg-red-600'}`}>
+          <div className="max-w-7xl mx-auto px-4 py-2 text-center text-white font-semibold">
+            {toastMsg}
           </div>
         </div>
       )}
