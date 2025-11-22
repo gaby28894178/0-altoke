@@ -21,24 +21,24 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
   const precioFinal = aplicaDescuento ? Math.round(basePrecio * (1 - descuento / 100)) : basePrecio
   return (
     <div className="
-      relative w-full
-      h-[calc(16rem-12px)] max-[630px]:h-[calc(16rem-12px)]
+      relative w-full max-[633px]:w-[calc(100%-32px)]
+      h-[calc(16rem-12px)] max-[633px]:h-[calc(13.5rem-12px)]
       rounded-lg
       overflow-hidden
       border border-orange-200
       shadow-[0_2px_6px_rgba(0,0,0,0.08)]
       bg-white
       flex
-      group transition-transform duration-300 ease-out transform-gpu z-0
-      sm:hover:-translate-y-[3px] sm:hover:scale-[1.06]
-      sm:hover:z-30
-      sm:hover:border-yellow-400 sm:hover:shadow-[0_14px_24px_rgba(234,179,8,0.35)]
-      sm:hover:ring-2 sm:hover:ring-yellow-300 sm:hover:ring-offset-1 sm:hover:ring-offset-white
-      mx-auto
+      group transition-all duration-300 ease-out transform-gpu z-0
+      hover:-translate-y-[1px] hover:scale-[1.02] sm:hover:-translate-y-[3px] sm:hover:scale-[1.06]
+      hover:z-30 sm:hover:z-30
+      hover:border-orange-500 hover:shadow-[0_0_0_2px_rgba(124,58,237,0.65),0_10px_18px_rgba(234,179,8,0.28)] sm:hover:border-yellow-400 sm:hover:shadow-[0_14px_24px_rgba(234,179,8,0.35)]
+      hover:ring-2 hover:ring-yellow-300 hover:ring-offset-1 hover:ring-offset-white sm:hover:ring-2 sm:hover:ring-yellow-300 sm:hover:ring-offset-1 sm:hover:ring-offset-white
+      mx-auto sm:mx-0
     " style={{ willChange: 'transform' }}>
       <span className="shine absolute top-0 left-[-50%] h-full w-[30%] bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 mix-blend-overlay"></span>
       {/* Imagen con "AL TOKE" incluido en el diseño - 65% */}
-      <div className="w-[60%] sm:w-[65%] h-full relative overflow-hidden rounded-l-lg bg-gray-800">
+      <div className="w-[50%] sm:w-[65%] h-full relative overflow-hidden rounded-l-lg bg-gray-800 max-[633px]:p-2">
         {imagenSrc
           ? (() => {
               const isLocal = /^\/combos\//i.test(imagenSrc)
@@ -96,12 +96,12 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
       
       </div>
 
-      <div className="w-[40%] sm:w-[35%] h-full bg-gray-800 text-white py-2 px-0.5 flex flex-col justify-start relative">
+      <div className="w-[50%] sm:w-[35%] h-full bg-gray-800 text-white py-2 px-0.5 flex flex-col justify-start relative">
         
         <div>
-          <div className="flex items-center justify-center gap-1 mb-1 font-orbitron text-white text-[13px]">
+          <div className="flex items-center justify-center gap-1 mb-1 font-orbitron text-white text-[14px] sm:text-[16px]">
             <span>AL T</span>
-            <GiHamburger size={18} className="text-yellow-300" />
+            <GiHamburger size={20} className="text-yellow-300" />
             <span>KE</span>
           </div>
           <h3 className="font-bold text-[13px] sm:text-[14px] text-yellow-300 leading-tight mb-1 text-center">
@@ -134,7 +134,7 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
             className="
               w-full
               flex items-center justify-center gap-1
-              py-1.5 sm:py-2
+              py-2 sm:py-2
               bg-gradient-to-r from-orange-500 to-red-500
               text-white font-medium
               rounded
