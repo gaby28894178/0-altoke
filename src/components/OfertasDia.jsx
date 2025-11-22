@@ -12,9 +12,10 @@ function normalizeImagen(img) {
 }
 
 const getProdImagenSrc = (prod) => {
-  const url = (prod && prod.imagenUrl) ? String(prod.imagenUrl) : ''
-  if (/^https?:\/\//.test(url)) return url
-  return normalizeImagen(prod?.imagen)
+  const local = normalizeImagen(prod?.imagen)
+  if (local) return local
+  const url = String(prod?.imagenUrl || '')
+  return /^https?:\/\//.test(url) ? url : null
 }
 
 const truncate = (s, n) => {
@@ -97,6 +98,41 @@ export default function OfertasDia() {
                     <div className="image-container-fixed">
                       {getProdImagenSrc(prod) ? (() => {
                         const original = getProdImagenSrc(prod)
+                        if (/^\/combos\//i.test(original)) {
+                          const m = original.match(/\/combos\/(.+?)\.(png|jpe?g|webp)$/i)
+                          const base = m ? m[1] : original.replace(/^\/combos\//, '').replace(/\.(png|jpe?g|webp)$/i, '')
+                          const w424 = `/combos/${base}_424.webp`
+                          const w640 = `/combos/${base}_640.webp`
+                          const w800 = `/combos/${base}_800.webp`
+                          const j424 = `/combos/${base}_424.jpg`
+                          const j640 = `/combos/${base}_640.jpg`
+                          const j800 = `/combos/${base}_800.jpg`
+                          const fallback = j640
+                          return (
+                            <picture>
+                              <source type="image/webp" srcSet={`${w424} 424w, ${w640} 640w, ${w800} 800w`} sizes="(max-width: 630px) 424px, 640px" />
+                              <source type="image/jpeg" srcSet={`${j424} 424w, ${j640} 640w, ${j800} 800w`} sizes="(max-width: 630px) 424px, 640px" />
+                              <img 
+                                src={fallback}
+                                alt={prod.nombre} 
+                                className="standardized-image imagencarrucel"
+                                loading={idx === 0 ? 'eager' : 'lazy'}
+                                decoding="async"
+                                fetchpriority={idx === 0 ? 'high' : 'low'}
+                                onError={(e) => {
+                                  const cur = e.currentTarget.src
+                                  if (/\.webp($|\?)/i.test(cur)) {
+                                    e.currentTarget.src = original
+                                    return
+                                  }
+                                  e.currentTarget.style.display = 'none'
+                                  const placeholder = e.currentTarget.nextElementSibling
+                                  if (placeholder) placeholder.style.display = 'flex'
+                                }}
+                              />
+                            </picture>
+                          )
+                        }
                         const primary = String(original).replace(/\.(png|jpe?g)$/i, '.webp')
                         return (
                           <img 

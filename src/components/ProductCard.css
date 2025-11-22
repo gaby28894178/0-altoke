@@ -156,3 +156,23 @@
   object-fit: cover;
   object-position: center;
 }
+@media (max-width: 640px) {
+  .card {
+    height: calc(clamp(11rem, 40vw, 14rem) - 12px);
+    border: 2px solid red;
+  }
+
+  .card:hover {
+    border-color: #369b3bff;
+    
+  }
+
+  .card__content {
+    width: 55%;
+    padding: 0.5rem 0;
+  }
+
+  .card__button {
+    padding: 0.5rem 1rem;
+  }
+}

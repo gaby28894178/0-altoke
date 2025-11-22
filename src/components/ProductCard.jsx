@@ -29,7 +29,11 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
       shadow-[0_2px_6px_rgba(0,0,0,0.08)]
       bg-white
       flex
-      group transition-transform duration-300 ease-out transform-gpu sm:hover:-translate-y-[2px] sm:hover:scale-[1.04] sm:hover:shadow-lg
+      group transition-transform duration-300 ease-out transform-gpu z-0
+      sm:hover:-translate-y-[3px] sm:hover:scale-[1.06]
+      sm:hover:z-30
+      sm:hover:border-yellow-400 sm:hover:shadow-[0_14px_24px_rgba(234,179,8,0.35)]
+      sm:hover:ring-2 sm:hover:ring-yellow-300 sm:hover:ring-offset-1 sm:hover:ring-offset-white
       mx-auto
     " style={{ willChange: 'transform' }}>
       <span className="shine absolute top-0 left-[-50%] h-full w-[30%] bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 mix-blend-overlay"></span>
@@ -37,12 +41,39 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
       <div className="w-[60%] sm:w-[65%] h-full relative overflow-hidden rounded-l-lg bg-gray-800">
         {imagenSrc
           ? (() => {
+              const isLocal = /^\/combos\//i.test(imagenSrc)
+              if (isLocal) {
+                const m = imagenSrc.match(/\/combos\/(.+?)\.(png|jpe?g|webp)$/i)
+                const base = m ? m[1] : imagenSrc.replace(/^\/combos\//, '').replace(/\.(png|jpe?g|webp)$/i, '')
+                const w424 = `/combos/${base}_424.webp`
+                const w640 = `/combos/${base}_640.webp`
+                const w800 = `/combos/${base}_800.webp`
+                const j424 = `/combos/${base}_424.jpg`
+                const j640 = `/combos/${base}_640.jpg`
+                const j800 = `/combos/${base}_800.jpg`
+                const fallback = j640
+                return (
+                  <picture>
+                    <source type="image/webp" srcSet={`${w424} 424w, ${w640} 640w, ${w800} 800w`} sizes="(max-width: 630px) 424px, 640px" />
+                    <source type="image/jpeg" srcSet={`${j424} 424w, ${j640} 640w, ${j800} 800w`} sizes="(max-width: 630px) 424px, 640px" />
+                    <img
+                      src={fallback}
+                      alt={producto.nombre}
+                      className="w-full h-full object-cover object-center img"
+                      loading={priority ? 'eager' : 'lazy'}
+                      fetchpriority={priority ? 'high' : 'low'}
+                      decoding="async"
+                      onError={(e) => { e.currentTarget.src = imagenSrc }}
+                    />
+                  </picture>
+                )
+              }
               const primary = imagenSrc.replace(/\.(png|jpe?g)$/i, '.webp')
               return (
                 <img
                   src={primary}
                   alt={producto.nombre}
-                  className="w-full h-full object-cover img"
+                  className="w-full h-full object-cover object-center img"
                   loading={priority ? 'eager' : 'lazy'}
                   fetchpriority={priority ? 'high' : 'low'}
                   decoding="async"

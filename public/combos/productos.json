@@ -88,6 +88,16 @@
     "imagen": "https://distribuidoranimax.com.ar/wp-content/uploads/2024/12/MANAOS-COLA-EN-LATA-x-U.jpg",
     "imagenUrl":"./cocalata.png",
     "popular": false
+  },
+      {
+    "id": 10,
+    "nombre": "Manaos Litro ",
+    "categoria": "bebidas",
+    "precio": 1950,
+    "descripcion": "Lata de manaos fria para acompañar tu pedido",
+    "imagen": "https://http2.mlstatic.com/D_632238-MLU74484919156_022024-C.jpg",
+    "imagenUrl":"https://http2.mlstatic.com/D_632238-MLU74484919156_022024-C.jpg",
+    "popular": false
   }
   
 ]

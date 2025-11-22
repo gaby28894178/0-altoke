@@ -8,13 +8,18 @@ async function optimize() {
   try {
     const files = await fs.readdir(combosDir)
     const images = files.filter(f => /\.(png|jpe?g)$/i.test(f))
+    const sizes = [424, 640, 800]
     await Promise.all(images.map(async (file) => {
       const input = path.join(combosDir, file)
-      const webpOut = path.join(combosDir, file.replace(/\.(png|jpe?g)$/i, '.webp'))
-      // Generate WebP ~80 quality and resize max width 800
-      const img = sharp(input).resize({ width: 800, withoutEnlargement: true })
-      await img.webp({ quality: 80 }).toFile(webpOut)
-      console.log('Generated', path.basename(webpOut))
+      const base = file.replace(/\.(png|jpe?g)$/i, '')
+      for (const s of sizes) {
+        const webpOut = path.join(combosDir, `${base}_${s}.webp`)
+        const jpgOut = path.join(combosDir, `${base}_${s}.jpg`)
+        const img = sharp(input).resize({ width: s, height: s, fit: 'cover', withoutEnlargement: true }).withMetadata({})
+        await img.webp({ quality: 78 }).toFile(webpOut)
+        await img.jpeg({ quality: 85, mozjpeg: true }).toFile(jpgOut)
+        console.log('Generated', path.basename(webpOut), 'and', path.basename(jpgOut))
+      }
     }))
   } catch (err) {
     console.error('Image optimization failed:', err)
