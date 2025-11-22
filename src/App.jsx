@@ -355,12 +355,13 @@ export default function TiendaComida() {
         
 
         <div ref={cardsRef} className="mt-6 mx-auto max-w-none grid grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-[3px]">
-          {productosFiltrados.map(producto => (
+          {productosFiltrados.map((producto, idx) => (
             <ProductCard
               key={producto.id}
               producto={producto}
               imagenSrc={getImagenSrc(producto.imagen)}
               onAdd={() => agregarAlCarrito(producto)}
+              priority={idx === 0}
             />
           ))}
         </div>

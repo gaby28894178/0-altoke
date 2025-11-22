@@ -3,7 +3,7 @@ import { FiShoppingCart } from 'react-icons/fi'
 import { GiHamburger } from 'react-icons/gi'
 import './ProductCard.css'
 
-export default function ComboCard({ producto, imagenSrc, onAdd }) {
+export default function ComboCard({ producto, imagenSrc, onAdd, priority = false }) {
   const descNorm = (producto?.descripcion || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
   const esComboConLata = descNorm.includes('lata')
   const nombreOriginal = (producto?.nombre || '').toString()
@@ -20,9 +20,9 @@ export default function ComboCard({ producto, imagenSrc, onAdd }) {
   const aplicaDescuento = descuento > 0 && basePrecio < ofertaLimite
   const precioFinal = aplicaDescuento ? Math.round(basePrecio * (1 - descuento / 100)) : basePrecio
   return (
-    <div className=" div
-      relative
-      h-[calc(15rem-12px)] sm:h-[calc(16rem-12px)]
+    <div className="
+      relative w-full
+      h-[calc(16rem-12px)]
       rounded-lg
       overflow-hidden
       border border-orange-200
@@ -30,7 +30,7 @@ export default function ComboCard({ producto, imagenSrc, onAdd }) {
       bg-white
       flex
       group transition-transform duration-300 ease-out transform-gpu sm:hover:-translate-y-[2px] sm:hover:scale-[1.04] sm:hover:shadow-lg
-      max-w-[380px] sm:max-w-none mx-auto
+      mx-auto
     " style={{ willChange: 'transform' }}>
       <span className="shine absolute top-0 left-[-50%] h-full w-[30%] bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 mix-blend-overlay"></span>
       {/* Imagen con "AL TOKE" incluido en el diseño - 65% */}
@@ -43,7 +43,8 @@ export default function ComboCard({ producto, imagenSrc, onAdd }) {
                   src={primary}
                   alt={producto.nombre}
                   className="w-full h-full object-cover img"
-                  loading="lazy"
+                  loading={priority ? 'eager' : 'lazy'}
+                  fetchpriority={priority ? 'high' : 'low'}
                   decoding="async"
                   onError={(e) => { e.currentTarget.src = imagenSrc }}
                 />
