@@ -22,7 +22,7 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
   return (
     <div className="
       relative w-full
-      h-[calc(16rem-12px)]
+      h-[calc(16rem-12px)] max-[630px]:h-[calc(16rem-12px)]
       rounded-lg
       overflow-hidden
       border border-orange-200
