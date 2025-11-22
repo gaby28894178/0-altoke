@@ -7,7 +7,11 @@ const combosDir = path.resolve(process.cwd(), 'public', 'combos')
 async function optimize() {
   try {
     const files = await fs.readdir(combosDir)
-    const images = files.filter(f => /\.(png|jpe?g)$/i.test(f))
+    const images = files.filter(f => {
+      if (!/\.(png|jpe?g)$/i.test(f)) return false
+      // Ignorar derivados con sufijos de tamaño para evitar cascadas
+      return !/_(424|640|800)(?:_|\.)/i.test(f)
+    })
     const sizes = [424, 640, 800]
     await Promise.all(images.map(async (file) => {
       const input = path.join(combosDir, file)

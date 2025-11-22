@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Error de WhatsApp</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin:0; background:#fff; }
+    .bar { background:#ef4444; color:#fff; padding:14px 18px; font-weight:700; }
+    .wrap { max-width:720px; margin:0 auto; padding:20px; }
+    .card { border:1px solid #eee; border-radius:12px; padding:18px; box-shadow:0 6px 12px rgba(0,0,0,.06); }
+    h1 { margin:0 0 6px; font-size:22px; }
+    p { margin:8px 0; color:#374151; }
+    code { background:#f3f4f6; padding:2px 6px; border-radius:6px; }
+    .btn { display:inline-block; margin-top:12px; background:#10b981; color:#fff; padding:10px 14px; border-radius:8px; text-decoration:none; }
+    .list { margin:10px 0 0 20px; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const back = document.getElementById('back')
+      if (back) back.addEventListener('click', (e) => { e.preventDefault(); history.back() })
+    })
+  </script>
+</head>
+<body>
+  <div class="bar">No se pudo abrir WhatsApp</div>
+  <div class="wrap">
+    <div class="card">
+      <h1>Verifica el número de WhatsApp</h1>
+      <p>El número configurado no parece válido o no está registrado en WhatsApp.</p>
+      <p>Revisa tu archivo de entorno y usa formato sin espacios y con código de país:</p>
+      <p><code>VITE_WHATSAPP_NUMBER=5491112345678</code></p>
+      <ul class="list">
+        <li>Incluye código de país (ej: Argentina 54) y área.</li>
+        <li>No uses signos ni espacios. Solo números.</li>
+        <li>Asegúrate que el número exista en WhatsApp.</li>
+      </ul>
+      <a id="back" href="#" class="btn">Volver</a>
+    </div>
+  </div>
+</body>
+</html>

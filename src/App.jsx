@@ -144,18 +144,29 @@ export default function TiendaComida() {
     setMostrarPedidoModal(true)
   }
 
-  const abrirWhatsAppWeb = (numero, texto) => {
+  const abrirWhatsAppWeb = (numero, texto, nuevaPestana = false) => {
     const phone = String(numero || '').replace(/[^0-9]/g, '')
+    if (!phone || phone.length < 10) {
+      window.location.href = '/error-whatsapp.html'
+      return
+    }
     const encoded = encodeURIComponent(String(texto || ''))
-    const url = `https://web.whatsapp.com/send?phone=${phone}&text=${encoded}`
-    window.open(url, '_blank')
+    const url = `https://wa.me/${phone}?text=${encoded}`
+    if (nuevaPestana) {
+      window.open(url, '_blank')
+    } else {
+      window.location.href = url
+    }
   }
 
   const enviarWhatsAppConsulta = () => {
     const numeroWhatsApp = import.meta.env.VITE_WHATSAPP_NUMBER || '5491123339962'
-    abrirWhatsAppWeb(numeroWhatsApp, consultaMsg || '')
+    const replyText = String(import.meta.env.VITE_WHATSAPP_REPLY || '')
+    const attentionDays = String(import.meta.env.VITE_ATTENTION_DAYS || '')
+    const texto = `${consultaMsg || ''}\n\n⏰ Días de Atención: ${attentionDays}\n${replyText}`
+    abrirWhatsAppWeb(numeroWhatsApp, texto, false)
     setMostrarContactoModal(false)
-    showToast('WhatsApp abierto', 'success')
+    showToast('Redirigiendo a WhatsApp', 'success')
   }
 
   const copiarMensaje = async () => {
@@ -169,10 +180,16 @@ export default function TiendaComida() {
       return
     }
     const numeroWhatsApp = import.meta.env.VITE_WHATSAPP_NUMBER || '5491123339962'
-    const mensaje = construirMensaje()
-    abrirWhatsAppWeb(numeroWhatsApp, mensaje)
+    const replyText = String(import.meta.env.VITE_WHATSAPP_REPLY || '')
+    const attentionDays = String(diasAtencion || '')
+    const descuentoText = String(import.meta.env.VITE_DESCUENTO || '')
+    const ofertaText = String(import.meta.env.VITE_OFERTA || '')
+    const base = construirMensaje()
+    const extras = `\n🎯 Descuento: ${descuentoText}\n🔥 Precio Oferta: $${ofertaText}\n📅 Fecha del Pedido: ${new Date().toLocaleDateString()}\n⏰ Días de Atención: ${attentionDays}\n\n${replyText}`
+    const mensaje = `${base}\n${extras}`
+    abrirWhatsAppWeb(numeroWhatsApp, mensaje, false)
     setMostrarPedidoModal(false)
-    showToast('WhatsApp abierto para enviar pedido', 'success')
+    showToast('Redirigiendo a WhatsApp', 'success')
   }
 
   const productosFiltrados = useMemo(() => {
@@ -466,6 +483,7 @@ export default function TiendaComida() {
           </div>
         </div>
       )}
+      
       {toastMsg && (
         <div className={`fixed bottom-0 left-0 right-0 z-50 w-full ${toastType === 'success' ? 'bg-green-600' : 'bg-red-600'}`}>
           <div className="max-w-7xl mx-auto px-4 py-2 text-center text-white font-semibold">
