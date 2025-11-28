@@ -177,16 +177,7 @@
   "imagenUrl": "altoke/28.png",
   "popular": false
   },
-  {
-    "id": 29,
-    "nombre": "Combo 29",
-    "categoria": "combos",
-    "precio": 5900,
-    "descripcion": "",
-  "imagen": "altoke/29.png",
-  "imagenUrl": "altoke/29.png",
-  "popular": false
-  },
+
   {
     "id": 30,
     "nombre": "Combo 30",

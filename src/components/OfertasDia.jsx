@@ -167,7 +167,7 @@ export default function OfertasDia() {
                   </div>
                   <div className="content-section">
                     <div className="text-content-centered">
-                      <h3 className="product-name-centered">{prod.nombre}</h3>
+                      <h3 className="product-name-centered">{`Combo ${prod?.id ?? ''}`}</h3>
                       <p className="product-description-centered">
                         {(() => {
                           const t = truncate(prod.descripcion, 39)

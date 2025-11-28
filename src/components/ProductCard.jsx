@@ -96,7 +96,7 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
             <span>KE</span>
           </div>
           <h3 className="combo-card-name">
-            {esTituloCombo ? tituloLimpio : nombreOriginal}
+            {`Combo ${producto?.id ?? ''}`}
           </h3>
           
           <p className="combo-card-description">
