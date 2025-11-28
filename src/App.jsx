@@ -207,7 +207,24 @@ export default function TiendaComida() {
   const productosFiltrados = useMemo(() => {
     const q = normalizeText(busqueda)
     if (!q) return productos
-    return productos.filter(p => normalizeText(p.nombre).includes(q))
+    return productos.filter(p => {
+      const n = normalizeText(p.nombre)
+      const d = normalizeText(p.descripcion)
+      const metas = Array.isArray(p.meta) ? p.meta.map(x => normalizeText(x)) : []
+      const sraw = String(p.status || '')
+      const s = normalizeText(sraw)
+      const tokens = [q]
+      if (/\barticulo\b/.test(q)) tokens.push('art')
+      if (/\bart\b/.test(q)) tokens.push('articulo')
+      if (/\bcombo\b/.test(q)) tokens.push('combo')
+      if (/\boferta\b/.test(q)) tokens.push('oferta')
+      return tokens.some(t => (
+        n.includes(t) ||
+        d.includes(t) ||
+        metas.some(m => m.includes(t)) ||
+        s.includes(t)
+      ))
+    })
   }, [busqueda, productos])
 
   const cantidadItems = carrito.reduce((total, item) => total + item.cantidad, 0)

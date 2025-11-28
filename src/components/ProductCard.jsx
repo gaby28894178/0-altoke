@@ -26,6 +26,10 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
     ))
   }
   const sinStock = (Number(producto?.precio) || 0) <= 0 || (Number(producto?.stock ?? 1) <= 0)
+  const statusBase = String(producto?.status || (esCategoriaCombo ? 'combo' : /unidad/i.test(categoriaNorm) ? 'art' : 'art')).toLowerCase()
+  const esOferta = statusBase === 'oferta'
+  const badgeText = esOferta ? 'OFERTA' : (statusBase === 'art' ? 'ARTICULO' : 'COMBO')
+  const badgeClass = `combo-badge ${esOferta ? 'oferta' : (statusBase === 'art' ? 'art' : 'combo')}`
   
   return (
     <div className="combo-card">
@@ -80,12 +84,10 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
               🍔
             </div>
         }
-        {esCombo && (
-          <div className="combo-badge">
-            <div className="combo-badge-bg"></div>
-            <span className="combo-badge-text">{etiquetaCombo}</span>
-          </div>
-        )}
+        <div className={badgeClass}>
+          <div className="combo-badge-bg"></div>
+          <span className="combo-badge-text">{badgeText}</span>
+        </div>
       </div>
 
       <div className="combo-card-content">
