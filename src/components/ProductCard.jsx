@@ -4,41 +4,35 @@ import { GiHamburger } from 'react-icons/gi'
 import './ProductCard.css'
 
 export default function ComboCard({ producto, imagenSrc, onAdd, priority = false }) {
-  const descNorm = (producto?.descripcion || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-  const esComboConLata = descNorm.includes('lata')
   const nombreOriginal = (producto?.nombre || '').toString()
   const esTituloCombo = /\bcombo\b/i.test(nombreOriginal)
   const tituloLimpio = nombreOriginal.replace(/\bcombo\b/ig, '').replace(/\s{2,}/g, ' ').trim()
   const categoriaNorm = (producto?.categoria || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-  const esCategoriaCombo = /\bcombo(s)?\b/i.test(categoriaNorm)
-  const esCategoriaBebidas = /\bbebidas\b/i.test(categoriaNorm)
-  const esCombo = (esTituloCombo || esComboConLata || esCategoriaCombo) && !esCategoriaBebidas
-  const etiquetaCombo = esCategoriaCombo && /combos/i.test(producto?.categoria || '') ? 'COMBOS' : 'COMBO'
+  const esCategoriaCombo = /\bcombos\b/i.test(categoriaNorm)
+  const esCombo = esTituloCombo && esCategoriaCombo
+  const etiquetaCombo = 'COMBO'
   const ofertaLimite = Number(String(import.meta.env.VITE_OFERTA ?? '0').replace(/[^0-9.]/g,'')) || 0
   const descuento = Number(String(import.meta.env.VITE_DESCUENTO ?? '0').replace(/[^0-9.]/g,'')) || 0
   const basePrecio = Number(producto?.precio) || 0
   const aplicaDescuento = descuento > 0 && basePrecio < ofertaLimite
   const precioFinal = aplicaDescuento ? Math.round(basePrecio * (1 - descuento / 100)) : basePrecio
+  const renderDescripcion = () => {
+    const t = String(producto?.descripcion || '')
+    const parts = t.split(/(arte(?:san|zan)al)/ig)
+    return parts.map((p, i) => (
+      /^arte(?:san|zan)al$/i.test(p)
+        ? <span key={i} className="text-orange-500">{p}</span>
+        : <span key={i}>{p}</span>
+    ))
+  }
+  const sinStock = (Number(producto?.precio) || 0) <= 0 || (Number(producto?.stock ?? 1) <= 0)
+  
   return (
-    <div className="
-      relative w-full max-[633px]:w-[calc(100%-32px)]
-      h-[calc(16rem-12px)] max-[633px]:h-[calc(13.5rem-12px)]
-      rounded-lg
-      overflow-hidden
-      border border-orange-200
-      shadow-[0_2px_6px_rgba(0,0,0,0.08)]
-      bg-white
-      flex
-      group transition-all duration-300 ease-out transform-gpu z-0
-      hover:-translate-y-[1px] hover:scale-[1.02] sm:hover:-translate-y-[3px] sm:hover:scale-[1.06]
-      hover:z-30 sm:hover:z-30
-      hover:border-orange-500 hover:shadow-[0_0_0_2px_rgba(124,58,237,0.65),0_10px_18px_rgba(234,179,8,0.28)] sm:hover:border-yellow-400 sm:hover:shadow-[0_14px_24px_rgba(234,179,8,0.35)]
-      hover:ring-2 hover:ring-yellow-300 hover:ring-offset-1 hover:ring-offset-white sm:hover:ring-2 sm:hover:ring-yellow-300 sm:hover:ring-offset-1 sm:hover:ring-offset-white
-      mx-auto sm:mx-0
-    " style={{ willChange: 'transform' }}>
-      <span className="shine absolute top-0 left-[-50%] h-full w-[30%] bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 mix-blend-overlay"></span>
+    <div className="combo-card">
+      <span className="shine"></span>
+      
       {/* Imagen con "AL TOKE" incluido en el diseño - 65% */}
-      <div className="w-[50%] sm:w-[65%] h-full relative overflow-hidden rounded-l-lg bg-gray-800 max-[633px]:p-2">
+      <div className="combo-card-image">
         {imagenSrc
           ? (() => {
               const isLocal = /^\/combos\//i.test(imagenSrc)
@@ -60,7 +54,7 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
                     <img
                       src={fallback}
                       alt={producto.nombre}
-                      className="w-full h-full object-cover object-center img"
+                      className="combo-card-img"
                       loading={priority ? 'eager' : 'lazy'}
                       fetchpriority={priority ? 'high' : 'low'}
                       decoding="async"
@@ -74,7 +68,7 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
                 <img
                   src={primary}
                   alt={producto.nombre}
-                  className="w-full h-full object-cover object-center img"
+                  className="combo-card-img"
                   loading={priority ? 'eager' : 'lazy'}
                   fetchpriority={priority ? 'high' : 'low'}
                   decoding="async"
@@ -82,70 +76,56 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
                 />
               )
             })()
-          : <div className="w-full h-full bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center text-3xl">
+          : <div className="combo-card-placeholder">
               🍔
             </div>
         }
         {esCombo && (
-          <div className="absolute -left-2 top-[2.25rem] -rotate-[28deg] origin-top-left z-10 pointer-events-none">
-            <div className="relative">
-              <div className="absolute left-[-50%] top-1/2 -translate-y-1/2 w-[200%] h-[30px] bg-yellow-500"></div>
-              <span className="relative text-white px-3 font-bold tracking-wide shadow-md" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.85)' }}>{etiquetaCombo}</span>
-            </div>
+          <div className="combo-badge">
+            <div className="combo-badge-bg"></div>
+            <span className="combo-badge-text">{etiquetaCombo}</span>
           </div>
         )}
-      
       </div>
 
-      <div className="w-[50%] sm:w-[35%] h-full bg-gray-800 text-white py-2 px-0.5 flex flex-col justify-start relative">
-        
-        <div>
-          <div className="flex items-center justify-center gap-1 mb-1 font-orbitron text-white text-[14px] sm:text-[16px]">
+      <div className="combo-card-content">
+        <div className="combo-card-header">
+          <div className="combo-card-title">
             <span>AL T</span>
-            <GiHamburger size={20} className="text-yellow-300" />
+            <GiHamburger size={20} className="combo-card-burger" />
             <span>KE</span>
           </div>
-          <h3 className="font-bold text-[13px] sm:text-[14px] text-yellow-300 leading-tight mb-1 text-center">
+          <h3 className="combo-card-name">
             {esTituloCombo ? tituloLimpio : nombreOriginal}
           </h3>
           
-          {/* Descripción */}
-          <p className="text-gray-300 text-[10px] sm:text-[11px] leading-tight clamp-3 overflow-hidden text-center mt-1.5">
-            {producto.descripcion}
+          <p className="combo-card-description">
+            {renderDescripcion()}
           </p>
         </div>
 
         {/* Precio y Botón (fijo debajo de la mitad) */}
-        <div className="absolute left-0 right-0 bottom-[44px] px-0">
-          <div className="space-y-1">
+        <div className="combo-card-price-section">
+          <div className="combo-card-prices">
             {aplicaDescuento ? (
               <div>
-                <span className="block text-center text-gray-300 line-through">${basePrecio}</span>
-                <span className="block w-full bg-black text-yellow-300 text-xs px-2 py-0.5 text-center">2da unidad -{descuento}%</span>
-                <span className="block text-center bg-black text-yellow-300 font-extrabold text-base px-2 py-0.5 rounded">${precioFinal}</span>
+                <span className="combo-card-original-price">${basePrecio.toFixed(2)}</span>
+                <span className="combo-card-discount-badge">2da unidad -{descuento}%</span>
+                <span className="combo-card-final-price">${precioFinal.toFixed(2)}</span>
               </div>
             ) : (
-              <span className="block text-center bg-green-700 text-white font-bold text-base px-2 py-0.5 rounded">${basePrecio}</span>
+              <span className="combo-card-normal-price">${basePrecio.toFixed(2)}</span>
             )}
           </div>
         </div>
-        <div className="absolute left-0 right-0 bottom-1 px-0">
+        <div className="combo-card-button-section">
           <button 
             onClick={onAdd}
-            className="
-              w-full
-              flex items-center justify-center gap-1
-              py-2 sm:py-2
-              bg-gradient-to-r from-orange-500 to-red-500
-              text-white font-medium
-              rounded
-              hover:from-orange-600 hover:to-red-600
-              text-[11px]
-              focus:outline-none focus:ring-2 focus:ring-orange-300
-            "
+            disabled={sinStock}
+            className="combo-card-button"
           >
             <FiShoppingCart size={12} />
-            Agregar
+            {sinStock ? 'Sin stock' : 'Agregar'}
           </button>
         </div>
       </div>

@@ -1,178 +1,267 @@
-.card {
+.combo-card {
   position: relative;
-  height: calc(clamp(12rem, 30vw, 16rem) - 12px);
-  border-radius: 1rem;
-  overflow: hidden;
-  border: 2px solid #ffedd5;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-  transition: transform 200ms ease;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-.dark .card {
-  border-color: #374151;
-}
-
-.card__row {
-  display: flex;
-  height: 100%;
-}
-
-.card__media {
-  width: 55%;
-  height: 100%;
-  border-radius: 1rem 0 0 1rem;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card__image {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  object-position: center;
-}
-
-.card__placeholder {
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.5rem;
-}
-
-.card__contentWrap {
-  position: relative;
-  z-index: 10;
-  height: 100%;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
-}
-
-.card__content {
-  width: 45%;
-  margin-left: auto;
-  background: rgba(0, 0, 0, 0.35);
-  color: #fff;
-  border-radius: 0 1rem 1rem 0;
-  padding: 0.5rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.25rem;
-}
-
-.brand span {
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-}
-
-.card__title {
-  font-weight: 700;
-  font-size: clamp(0.95rem, 2vw, 1.1rem);
-  margin-bottom: 0.5rem;
-  text-align: left;
-}
-
-.card__desc {
-  font-size: clamp(0.7rem, 1.8vw, 0.85rem);
-  line-height: 1.25rem;
+  height: calc(16rem - 12px);
+  border-radius: 0.5rem;
   overflow: hidden;
-  max-height: 5rem;
-  margin-bottom: 1rem;
-}
-
-.card__footer {
+  border: 1px solid #fed7aa;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background: white;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  margin: 0 auto;
+  transition: all 0.3s ease-out;
+  transform: translateZ(0);
+  z-index: 0;
 }
 
-.card__price {
-  color: #fde68a;
-  font-weight: 700;
-  font-size: clamp(1.25rem, 3vw, 1.875rem);
+.combo-card:hover {
+  transform: translateY(-1px) scale(1.02);
+  z-index: 30;
+  border-color: #f97316;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.65), 0 10px 18px rgba(234, 179, 8, 0.28);
+  outline: 2px solid #fde047;
+  outline-offset: 1px;
 }
 
-.card__button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.2rem;
-  padding: 0.65rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 700;
-  color: #fff;
-  background-image: linear-gradient(to right, #f97316, #ef4444);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+.shine {
+  position: absolute;
+  top: 0;
+  left: -50%;
+  height: 100%;
+  width: 30%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-12deg);
+  mix-blend-mode: overlay;
 }
 
-.card__button:hover {
-  background-image: linear-gradient(to right, #ea580c, #dc2626);
+.combo-card-image {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem 0 0 0.5rem;
+  background: #1f2937;
+  padding: 0;
 }
 
-@media (max-width: 640px) {
-  .card {
-    height: calc(clamp(11rem, 40vw, 14rem) - 12px);
-    border: 2px solid red;
-  }
-
-  .card__content {
-    width: 55%;
-
-    padding: 0.5rem 0;
-  }
-
-  .card__button {
-    padding: 0.5rem 1rem;
-  }
-}
-
-
-
-.img{
-
-
+.combo-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
 }
-@media (max-width: 640px) {
-  .card {
-    height: calc(clamp(11rem, 40vw, 14rem) - 12px);
-    border: 2px solid red;
-  }
 
-  .card:hover {
-    border-color: #369b3bff;
-    
-  }
+.combo-card-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #fffbeb, #fed7aa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
 
-  .card__content {
-    width: 55%;
-    padding: 0.5rem 0;
-  }
+.combo-badge {
+  position: absolute;
+  left: -0.5rem;
+  top: 2.25rem;
+  transform: rotate(-28deg);
+  transform-origin: top left;
+  z-index: 10;
+  pointer-events: none;
+}
 
-  .card__button {
-    padding: 0.5rem 1rem;
+.combo-badge-bg {
+  position: absolute;
+  left: -50%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200%;
+  height: 30px;
+  background: #eab308;
+}
+
+.combo-badge-text {
+  position: relative;
+  color: white;
+  padding: 0 0.75rem;
+  font-weight: bold;
+  letter-spacing: 0.025em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+}
+
+.combo-card-content {
+  width: 50%;
+  height: 100%;
+  background: #1f2937;
+  color: white;
+  padding: 0.5rem 0.125rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.combo-card-header {
+  text-align: center;
+}
+
+.combo-card-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 0.25rem;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+  font-size: 14px;
+}
+
+.combo-card-burger {
+  color: #fde047;
+}
+
+.combo-card-name {
+  font-weight: bold;
+  font-size: 13px;
+  color: #fde047;
+  line-height: 1.25;
+  margin-bottom: 0.25rem;
+}
+
+.combo-card-description {
+  color: #d1d5db;
+  font-size: 10px;
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 0.375rem;
+}
+
+.combo-card-price-section {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 44px;
+  padding: 0 0.125rem;
+}
+
+.combo-card-prices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.combo-card-original-price {
+  display: block;
+  text-align: center;
+  color: #d1d5db;
+  text-decoration: line-through;
+}
+
+.combo-card-discount-badge {
+  display: block;
+  width: 100%;
+  background: black;
+  color: #fde047;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  text-align: center;
+}
+
+.combo-card-final-price {
+  display: block;
+  text-align: center;
+  background: black;
+  color: #fde047;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.combo-card-normal-price {
+  display: block;
+  text-align: center;
+  background: #15803d;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.combo-card-button-section {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.25rem;
+  padding: 0 0.125rem;
+}
+
+.combo-card-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  background: linear-gradient(to right, #f97316, #ef4444);
+  color: white;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  border: none;
+  font-size: 11px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.combo-card-button:hover {
+  background: linear-gradient(to right, #ea580c, #dc2626);
+}
+
+.combo-card-button:focus {
+  outline: 2px solid #fdba74;
+}
+
+/* Responsive */
+@media (max-width: 633px) {
+  .combo-card {
+    width: calc(100% - 32px);
+    height: calc(13.5rem - 12px);
+  }
+  
+  .combo-card-image {
+    padding: 0.5rem;
+  }
+  
+  .combo-card-title {
+    font-size: 16px;
+  }
+  
+  .combo-card-name {
+    font-size: 14px;
+  }
+  
+  .combo-card-description {
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 640px) {
+  .combo-card-image {
+    width: 65%;
+  }
+  
+  .combo-card-content {
+    width: 35%;
+  }
+  
+  .combo-card:hover {
+    transform: translateY(-3px) scale(1.06);
+    border-color: #facc15;
+    box-shadow: 0 14px 24px rgba(234, 179, 8, 0.35);
   }
 }

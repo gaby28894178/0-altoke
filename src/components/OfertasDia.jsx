@@ -4,11 +4,15 @@ import "./OfertasDia.css"
 function normalizeImagen(img) {
   if (!img || typeof img !== 'string') return null
   if (/^https?:\/\//.test(img)) return img
-  const isFile = /(png|jpe?g|gif|webp|svg)$/i.test(img)
+  const isFile = /(png|jpe?g|gif|webp|svg|avif)$/i.test(img)
   if (!isFile) return null
-  const clean = img.replace(/^\.\//, '').replace(/^\//, '')
-  const withBase = clean.startsWith('combos/') ? clean : `combos/${clean}`
-  return `/${withBase.replace(/\s/g, '%20')}`
+  let clean = String(img).trim().replace(/^\.\/+/, '').replace(/^\/+/, '')
+  clean = clean.replace(/^(\.\.\/)+/, '../')
+  if (/^(combos|altoke|fondo-carrucel)\//i.test(clean)) {
+    clean = clean.replace(/^\.\.\//, '')
+    return `/${clean.replace(/\s/g, '%20')}`
+  }
+  return `/combos/${clean.replace(/\s/g, '%20')}`
 }
 
 const getProdImagenSrc = (prod) => {
@@ -164,7 +168,17 @@ export default function OfertasDia() {
                   <div className="content-section">
                     <div className="text-content-centered">
                       <h3 className="product-name-centered">{prod.nombre}</h3>
-                      <p className="product-description-centered">{truncate(prod.descripcion, 39)}</p>
+                      <p className="product-description-centered">
+                        {(() => {
+                          const t = truncate(prod.descripcion, 39)
+                          const parts = String(t).split(/(arte(?:san|zan)al)/ig)
+                          return parts.map((p, i) => (
+                            /^arte(?:san|zan)al$/i.test(p)
+                              ? <span key={i} className="text-orange-500">{p}</span>
+                              : <span key={i}>{p}</span>
+                          ))
+                        })()}
+                      </p>
                       
                       <div className="discount-banner-centered">
                         <p>Descuento del {ofertaPorcentaje}% aplicado</p>
@@ -173,8 +187,8 @@ export default function OfertasDia() {
                     
                     <div className="pricing-section-centered">
                       <div className="prices-row">
-                        <span className="original-price-centered">${base.toLocaleString()}</span>
-                        <span className="discount-price-centered">${oferta.toLocaleString()}</span>
+                        <span className="original-price-centered">${base.toFixed(2)}</span>
+                        <span className="discount-price-centered">${oferta.toFixed(2)}</span>
                       </div>
                       
                       <div className="badges-row">

@@ -43,11 +43,15 @@ export default function TiendaComida() {
   const getImagenSrc = (img) => {
     if (!img || typeof img !== 'string') return null
     if (/^https?:\/\//.test(img)) return img
-    const isFile = /(png|jpe?g|gif|webp|svg)$/i.test(img)
+    const isFile = /(png|jpe?g|gif|webp|svg|avif)$/i.test(img)
     if (!isFile) return null
-    const clean = img.replace(/^\.\//, '').replace(/^\//, '')
-    const withBase = clean.startsWith('combos/') ? clean : `combos/${clean}`
-    return `/${withBase.replace(/\s/g, '%20')}`
+    let clean = String(img).trim().replace(/^\.\/+/, '').replace(/^\/+/, '')
+    clean = clean.replace(/^(\.\.\/)+/, '../')
+    if (/^(combos|altoke|fondo-carrucel)\//i.test(clean)) {
+      clean = clean.replace(/^\.\.\//, '')
+      return `/${clean.replace(/\s/g, '%20')}`
+    }
+    return `/combos/${clean.replace(/\s/g, '%20')}`
   }
 
   useEffect(() => {
@@ -73,6 +77,11 @@ export default function TiendaComida() {
   ]
 
   const agregarAlCarrito = (producto) => {
+    const disponible = (Number(producto?.precio) || 0) > 0 && (Number(producto?.stock ?? 1) > 0)
+    if (!disponible) {
+      showToast('Sin stock o precio no disponible', 'error')
+      return
+    }
     const existe = carrito.find(item => item.id === producto.id)
     if (existe) {
       setCarrito(carrito.map(item => item.id === producto.id ? { ...item, cantidad: item.cantidad + 1 } : item))
@@ -326,13 +335,13 @@ export default function TiendaComida() {
                               const desc = precioSegundaUnidad(item)
                               return (
                                 <div className="flex items-center gap-2">
-                                  <span className="text-gray-500 line-through">${base}</span>
-                                  <span className="text-orange-600 font-semibold">${desc}</span>
+                                  <span className="text-gray-500 line-through">${base.toFixed(2)}</span>
+                                  <span className="text-orange-600 font-semibold">${desc.toFixed(2)}</span>
                                   <span className="text-xs bg-black text-yellow-300 px-2 py-0.5 rounded">2da -{descuento}%</span>
                                 </div>
                               )
                             }
-                            return <p className="text-orange-600 font-semibold">${base}</p>
+                            return <p className="text-orange-600 font-semibold">${base.toFixed(2)}</p>
                           })()}
                         </div>
                         {getImagenSrc(item.imagen)
@@ -355,7 +364,7 @@ export default function TiendaComida() {
                         <div className="flex items-center gap-2">
                           {(() => {
                             return (
-                              <span className="font-bold text-lg text-orange-600">${totalItem(item)}</span>
+                              <span className="font-bold text-lg text-orange-600">${totalItem(item).toFixed(2)}</span>
                             )
                           })()}
                           <button onClick={() => eliminarDelCarrito(item.id)} className="bg-red-500 text-white p-2 rounded hover:bg-red-600">
@@ -373,7 +382,7 @@ export default function TiendaComida() {
               <div className="border-t-2 border-orange-200 dark:border-gray-700 p-6 bg-gradient-to-r from-orange-50 to-red-50 dark:from-gray-800 dark:to-gray-800">
                 <div className="flex justify-between items-center mb-4">
                   <span className="text-xl font-bold text-gray-800 dark:text-gray-100">Total:</span>
-                  <span className="text-3xl font-bold text-orange-600">${calcularTotal()}</span>
+                  <span className="text-3xl font-bold text-orange-600">${calcularTotal().toFixed(2)}</span>
                 </div>
                 <button onClick={abrirPedidoModal} className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-lg font-bold text-lg hover:from-green-600 hover:to-green-700 flex items-center justify-center gap-2 shadow-lg transform hover:scale-105 transition-all">
                   <FiSend size={24} />
@@ -384,7 +393,7 @@ export default function TiendaComida() {
           </div>
         </div>
       )}
-
+{
       <main role="main" id="main-content">
       <div className="max-w-7xl mx-auto sm:px-4 px-2 py-3">
         {verOfertas && !busqueda.trim() && <OfertasDia />}
@@ -403,7 +412,8 @@ export default function TiendaComida() {
           ))}
         </div>
       </div>
-      </main>
+      </main> 
+    }
 
       {!mostrarCarrito && carrito.length > 0 && (
         <button onClick={() => setMostrarCarrito(true)} className="fixed bottom-6 right-6 bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all z-30 focus:outline-none focus:ring-2 focus:ring-orange-300" aria-label="Abrir carrito">

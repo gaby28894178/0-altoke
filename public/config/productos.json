@@ -1,103 +1,200 @@
 [
   {
     "id": 1,
-    "nombre": "Hamburguesa + Brahma",
+    "nombre": "Combo 1",
     "categoria": "combos",
-    "precio": 7800,
-    "descripcion": "Hamburguesa completa  + Lata de cerveza ",
-    "imagen": "./hamburguesa_cerveza.png",
-    "imagenUrl": "https://st.depositphotos.com/1102480/1589/i/450/depositphotos_15890699-stock-photo-big-hamburger.jpg",
-    "popular": true
+    "precio": 8400,
+    "descripcion": "hamburguesa (ARTEZANAL) comleta +  una lata de cerverza Brahma al mejor precio ",
+  "imagen": "altoke/1.png",
+  "imagenUrl": "altoke/1.png",
+  "popular": true
   },
   {
-    "id": 2,
-    "nombre": "Sándwich Milanesa + Manaos",
-    "categoria": "combos",
-    "precio": 8200,
-    "descripcion": "Sándwich de milanesa con lechuga y tomate + Manaos",
-    "imagen": "./Mila_Completo_con _lata_manaos.png",
-    "imagenUrl": "https://naeu.com.py/wp-content/uploads/2019/09/Milanesa-de-carne-napolitana.jpg",
-    "popular": true
-  },
-  {
+  
     "id": 3,
-    "nombre": "Hamburguesa + Coca",
+    "nombre": "Combo 3",
     "categoria": "combos",
-    "precio": 12200,
-    "descripcion": "Hamburguesa completa + Coca cola ",
-    "imagen": "lisa2.png",
-    "imagenUrl": "https://st3.depositphotos.com/6203500/16639/i/450/depositphotos_166398880-stock-photo-studio-photography-of-a-hamburger.jpg",
-    "popular": false
+    "precio": 14900,
+    "descripcion": "Pancho con aderezo + 1 Una lata de cerveza  brahma ",
+  "imagen": "altoke/3.png",
+  "imagenUrl": "altoke/3.png",
+  "popular": false
   },
   {
     "id": 4,
-    "nombre": "Pizza Muzzarella + lata",
+    "nombre": "Combo 4",
     "categoria": "combos",
-    "precio": 4500,
-    "descripcion": "Pizza muzzarella grande + Manaos ",
-    "imagen": "./Pizza_manao_2.png",
-    "imagenUrl": "https://png.pngtree.com/thumb_back/fh260/background/20240720/pngtree-taking-slice-picture-of-prepared-delicious-pizza-with-sausage-rings-and-image_15902897.jpg",
-    "popular": true
+    "precio": 3400,
+    "descripcion": "Pancho con aderezo + 1 Una lata de cerveza  brahma ",
+  "imagen": "altoke/4.png",
+  "imagenUrl": "altoke/4.png",
+  "popular": true
   },
   {
     "id": 5,
-    "nombre": "Mila Napolitana + Coca",
+    "nombre": "Combo 5",
     "categoria": "combos",
-    "precio": 5000,
-    "descripcion": "Mila NAPOLITANO Salsa de Pizza queso  y tomate con oregano + coca en lata ",
-    "imagen": "./1111completo_de_mila_con_coca.png",
-    "imagenUrl": "./1111completo_de_mila_con_coca.png",
-    "popular": false
+    "precio": 9400,
+    "descripcion": "Milaneza completo   o napolitano   + una lata de  brahma",
+  "imagen": "altoke/5.png",
+  "imagenUrl": "altoke/5.png",
+  "popular": false
   },
   {
     "id": 6,
-    "nombre": "Panchos x3",
-    "categoria": "panchos",
-    "precio": 1800,
-    "descripcion": "3 Panchos con salchicha, ketchup, mostaza y mayonesa",
-    "imagen": "https://sinreservas.com.ar/download/multimedia.normal.a1245fe06e8a1db4.53616e7a617275202831295f6e6f726d616c2e77656270.webp",
-    "imagenUrl": "https://sinreservas.com.ar/download/multimedia.normal.a1245fe06e8a1db4.53616e7a617275202831295f6e6f726d616c2e77656270.webp",
-    "popular": false
+    "nombre": "Combo 6",
+    "categoria": "combos",
+    "precio": 7800,
+    "descripcion": "Hamburguesa completa  con adereso + una lata de  coca cola",
+  "imagen": "altoke/6.png",
+  "imagenUrl": "altoke/6.png",
+  "popular": false
   },
-    {
+  {
     "id": 7,
-    "nombre": "Brahma Lata x1",
-    "categoria": "bebidas",
-    "precio": 1950,
-    "descripcion": "Lata de cerveza brahma fria para acompañar tu pedido",
-    "imagen": "https://http2.mlstatic.com/D_865273-MLA51123063469_082022-C.jpg",
-    "imagenUrl": "https://dcdn-us.mitiendanube.com/stores/001/698/931/products/feed-contenido-27-9ec53b41a61d77a40117036899931514-640-0.jpg",
-    "popular": false
+    "nombre": "Combo 7",
+    "categoria": "combos",
+    "precio": 9300,
+    "descripcion": "Hamburguesa completa  con adereso + una lata de  coca cola",
+  "imagen": "altoke/7.png",
+  "imagenUrl": "altoke/7.png",
+  "popular": false
   },
-    {
-    "id": 8,
-    "nombre": "Cocacola Lata x1",
-    "categoria": "bebidas",
-    "precio": 1350,
-    "descripcion": "Lata de cerveza brahma fria para acompañar tu pedido",
-    "imagen": "./cocacola.png",
-    "imagenUrl":"./cocalata.png",
-    "popular": false
-  },
+
       {
     "id": 9,
-    "nombre": "Manaos Lata x1",
-    "categoria": "bebidas",
-    "precio": 1050,
-    "descripcion": "Lata de manaos fria para acompañar tu pedido",
-    "imagen": "https://distribuidoranimax.com.ar/wp-content/uploads/2024/12/MANAOS-COLA-EN-LATA-x-U.jpg",
-    "imagenUrl":"./cocalata.png",
-    "popular": false
+    "nombre": "Combo 9",
+    "categoria": "combos",
+     "precio": 8800,
+    "descripcion": "Milaneza completa  con adereso + una lata de  coca cola",
+  "imagen": "altoke/9.png",
+  "imagenUrl": "altoke/9.png",
+  "popular": false
   },
       {
     "id": 10,
-    "nombre": "Manaos Litro ",
-    "categoria": "bebidas",
-    "precio": 1950,
-    "descripcion": "Lata de manaos fria para acompañar tu pedido",
-    "imagen": "https://http2.mlstatic.com/D_632238-MLU74484919156_022024-C.jpg",
-    "imagenUrl":"https://http2.mlstatic.com/D_632238-MLU74484919156_022024-C.jpg",
-    "popular": false
-  }
+    "nombre": "Combo 10",
+    "categoria": "combos",
+    "precio": 2600,
+    "descripcion": "Super pancho con adereso + una lata de coca cola  ",
+  "imagen": "altoke/10.png",
+  "imagenUrl": "altoke/10.png",
+  "popular": false
+  },
   
+  {
+    "id": 11,
+    "nombre": "Combo 11",
+    "categoria": "combos",
+    "precio": 7500,
+    "descripcion": "Hamburgesa (ARTEZANAL) completa con adereso  + una lata de manaos  ",
+  "imagen": "altoke/11.png",
+  "imagenUrl": "altoke/11.png",
+  "popular": false
+  },
+  {
+    "id": 12,
+    "nombre": "Combo 12",
+    "categoria": "combos",
+    "precio": 10100,
+    "descripcion": "Hamburgesa (ARTEZANAL) completa con adereso  + una botella de manaos 2.25Litros  ",
+  "imagen": "altoke/12.png",
+  "imagenUrl": "altoke/12.png",
+  "popular": false
+  },
+ 
+  {
+    "id": 14,
+    "nombre": "Combo 14",
+    "categoria": "combos",
+    "precio": 8500,
+    "descripcion": "",
+  "imagen": "altoke/14.png",
+  "imagenUrl": "altoke/14.png",
+  "popular": false
+  },
+  {
+    "id": 15,
+    "nombre": "Combo 15",
+    "categoria": "combos",
+   "precio": 9500,
+    "descripcion": "Hamburgesa (ARTEZANAL) completa con adereso  + una lata de manaos 2.25Litro ",
+  "imagen": "altoke/15.png",
+  "imagenUrl": "altoke/15.png",
+  "popular": false
+  },
+  {
+    "id": 16,
+    "nombre": "Combo 16",
+    "categoria": "combos",
+    "precio": 3100,
+    "descripcion": "Super pancho con adereso + una manaos de   ",
+  "imagen": "altoke/16.png",
+  "imagenUrl": "altoke/16.png",
+  "popular": false
+  },
+
+
+  {
+    "id": 23,
+    "nombre": "Combo 23",
+    "categoria": "combos",
+    "precio": 1600,
+    "descripcion": "",
+  "imagen": "altoke/23.png",
+  "imagenUrl": "altoke/23.png",
+  "popular": false
+  },
+  {
+    "id": 24,
+    "nombre": "Combo 24",
+    "categoria": "combos",
+    "precio": 10500,
+    "descripcion": "",
+  "imagen": "altoke/24.png",
+  "imagenUrl": "altoke/24.png",
+  "popular": false
+  },
+ 
+   {
+    "id": 27,
+    "nombre": "Combo 26",
+    "categoria": "combos",
+    "precio": 12000,
+    "descripcion": "",
+  "imagen": "altoke/27.png",
+  "imagenUrl": "altoke/27.png",
+  "popular": false
+  },
+
+  {
+    "id": 28,
+    "nombre": "Combo 28",
+    "categoria": "combos",
+    "precio": 5800,
+    "descripcion": "",
+  "imagen": "altoke/28.png",
+  "imagenUrl": "altoke/28.png",
+  "popular": false
+  },
+  {
+    "id": 29,
+    "nombre": "Combo 29",
+    "categoria": "combos",
+    "precio": 5900,
+    "descripcion": "",
+  "imagen": "altoke/29.png",
+  "imagenUrl": "altoke/29.png",
+  "popular": false
+  },
+  {
+    "id": 30,
+    "nombre": "Combo 30",
+    "categoria": "combos",
+    "precio": 0.0,
+    "descripcion": "",
+  "imagen": "altoke/30.png",
+  "imagenUrl": "altoke/30.png",
+  "popular": false
+  }
 ]
