@@ -46,6 +46,27 @@ export default function OfertasDia() {
     return productos.filter(p => Number(p.precio) < ofertaMinPrecio)
   }, [productos, ofertaMinPrecio])
 
+  const corregirTexto = (s) => {
+    let t = String(s || '')
+    const reps = [
+      [/cerverza/ig, 'cerveza'],
+      [/artezanal/ig, 'artesanal'],
+      [/hamburgesa/ig, 'hamburguesa'],
+      [/adereso/ig, 'aderezo'],
+      [/milaneza/ig, 'milanesa'],
+      [/musarela/ig, 'muzzarella'],
+      [/aceiturnas/ig, 'aceitunas'],
+      [/manasos/ig, 'manaos'],
+      [/chedar/ig, 'cheddar'],
+      [/\s{2,}/g, ' '],
+      [/\s+,/g, ','],
+      [/\s+\./g, '.']
+    ]
+    reps.forEach(([re, r]) => { t = t.replace(re, r) })
+    t = t.replace(/\b(\d+)\s?L\b/ig, (_, n) => `${n} ${Number(n) === 1 ? 'litro' : 'litros'}`)
+    return t.trim()
+  }
+
   const prev = () => setActive(a => (a <= 0 ? Math.max(0, ofertasList.length - 1) : a - 1))
   const next = () => setActive(a => (a >= ofertasList.length - 1 ? 0 : a + 1))
 
@@ -170,10 +191,10 @@ export default function OfertasDia() {
                       <h3 className="product-name-centered">{`Combo ${prod?.id ?? ''}`}</h3>
                       <p className="product-description-centered">
                         {(() => {
-                          const t = truncate(prod.descripcion, 39)
-                          const parts = String(t).split(/(arte(?:san|zan)al)/ig)
+                          const t = truncate(corregirTexto(prod.descripcion), 39)
+                          const parts = String(t).split(/(artesanal)/ig)
                           return parts.map((p, i) => (
-                            /^arte(?:san|zan)al$/i.test(p)
+                            /^artesanal$/i.test(p)
                               ? <span key={i} className="text-orange-500">{p}</span>
                               : <span key={i}>{p}</span>
                           ))
