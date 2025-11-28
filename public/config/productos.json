@@ -224,7 +224,7 @@
     "imagen": "altoke/32.png",
     "imagenUrl": "altoke/32.png",
     "popular": false,
-    "status": "oferta",
+    "status": "ofertas",
     "meta": ["hamburguesa", "simple"]
   },
   {
@@ -236,7 +236,7 @@
     "imagen": "altoke/33.png",
     "imagenUrl": "altoke/33.png",
     "popular": false,
-    "status": "oferta",
+    "status": "ofertas",
     "meta": ["hamburguesa", "lyt"]
   },
   {
@@ -248,7 +248,7 @@
     "imagen": "altoke/34.png",
     "imagenUrl": "altoke/34.png",
     "popular": false,
-    "status": "oferta",
+    "status": "ofertas",
     "meta": ["hamburguesa", "cheddar"]
   },
   {
@@ -260,7 +260,7 @@
     "imagen": "altoke/35.png",
     "imagenUrl": "altoke/35.png",
     "popular": false,
-    "status": "art",
+    "status": "articulos",
     "meta": ["hamburguesa", "jyq", "jamón", "queso"]
   },
   {
@@ -272,7 +272,7 @@
     "imagen": "altoke/36.png",
     "imagenUrl": "altoke/36.png",
     "popular": false,
-    "status": "art",
+    "status": "articulos",
     "meta": ["jugo", "bebida", "pomelo"]
   },
   {
@@ -284,7 +284,7 @@
     "imagen": "altoke/37.png",
     "imagenUrl": "altoke/37.png",
     "popular": false,
-    "status": "art",
+    "status": "articulos",
     "meta": ["cerveza", "lata", "schneider"]
   },
   {
@@ -296,7 +296,7 @@
     "imagen": "altoke/38.png",
     "imagenUrl": "altoke/38.png",
     "popular": false,
-    "status": "art",
+    "status": "articulos",
     "meta": ["cerveza", "botella", "brahma"]
   }
 ]

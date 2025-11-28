@@ -18,18 +18,20 @@ export default function ComboCard({ producto, imagenSrc, onAdd, priority = false
   const precioFinal = aplicaDescuento ? Math.round(basePrecio * (1 - descuento / 100)) : basePrecio
   const renderDescripcion = () => {
     const t = String(producto?.descripcion || '')
-    const parts = t.split(/(arte(?:san|zan)al)/ig)
-    return parts.map((p, i) => (
-      /^arte(?:san|zan)al$/i.test(p)
-        ? <span key={i} className="text-orange-500">{p}</span>
-        : <span key={i}>{p}</span>
-    ))
+    const parts = t.split(/(no\s+artesanal|artesanal)/ig)
+    return parts.map((p, i) => {
+      if (/^no\s+artesanal$/i.test(p)) return <span key={i} className="text-red-600 font-semibold">{p}</span>
+      if (/^artesanal$/i.test(p)) return <span key={i} className="bg-green-600 text-white px-1 rounded">{p}</span>
+      return <span key={i}>{p}</span>
+    })
   }
   const sinStock = (Number(producto?.precio) || 0) <= 0 || (Number(producto?.stock ?? 1) <= 0)
-  const statusBase = String(producto?.status || (esCategoriaCombo ? 'combo' : /unidad/i.test(categoriaNorm) ? 'art' : 'art')).toLowerCase()
-  const esOferta = statusBase === 'oferta'
-  const badgeText = esOferta ? 'OFERTA' : (statusBase === 'art' ? 'ARTICULO' : 'COMBO')
-  const badgeClass = `combo-badge ${esOferta ? 'oferta' : (statusBase === 'art' ? 'art' : 'combo')}`
+  const statusBase = String(producto?.status || (esCategoriaCombo ? 'combo' : /unidad/i.test(categoriaNorm) ? 'articulos' : 'articulos')).toLowerCase()
+  const esOferta = /\boferta(s)?\b/.test(statusBase)
+  const esArt = /\bart(iculo|iculos)\b/.test(statusBase)
+  const esComb = /\bcombo\b/.test(statusBase)
+  const badgeText = esOferta ? 'OFERTA' : (esArt ? 'ARTICULO' : 'COMBO')
+  const badgeClass = `combo-badge ${esOferta ? 'oferta' : (esArt ? 'art' : 'combo')}`
   
   return (
     <div className="combo-card">

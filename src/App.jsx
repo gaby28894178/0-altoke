@@ -214,10 +214,10 @@ export default function TiendaComida() {
       const sraw = String(p.status || '')
       const s = normalizeText(sraw)
       const tokens = [q]
-      if (/\barticulo\b/.test(q)) tokens.push('art')
-      if (/\bart\b/.test(q)) tokens.push('articulo')
+      if (/\barticulo(s)?\b/.test(q)) tokens.push('art', 'articulo', 'articulos')
+      if (/\bart\b/.test(q)) tokens.push('articulo', 'articulos')
       if (/\bcombo\b/.test(q)) tokens.push('combo')
-      if (/\boferta\b/.test(q)) tokens.push('oferta')
+      if (/\boferta(s)?\b/.test(q)) tokens.push('oferta', 'ofertas')
       return tokens.some(t => (
         n.includes(t) ||
         d.includes(t) ||

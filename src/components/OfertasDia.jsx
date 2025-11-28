@@ -43,7 +43,16 @@ export default function OfertasDia() {
   }, [])
 
   const ofertasList = useMemo(() => {
-    return productos.filter(p => Number(p.precio) < ofertaMinPrecio)
+    return productos.filter(p => {
+      const precio = Number(p.precio) || 0
+      const status = String(p.status || '').toString().toLowerCase()
+      const esCombo = /\bcombo\b/.test(status) || /\bcombos\b/.test(String(p.categoria || '').toLowerCase())
+      const esArticulo = /\bart(iculo|iculos)\b/.test(status) || /\bunidad\b/.test(String(p.categoria || '').toLowerCase())
+      const esOferta = /\boferta(s)?\b/.test(status)
+      const pasaPrecio = precio < ofertaMinPrecio
+      // Incluir: combos con precio bajo, o artículos/combos marcados como oferta
+      return (esCombo && pasaPrecio) || (esOferta && (esCombo || esArticulo))
+    })
   }, [productos, ofertaMinPrecio])
 
   const corregirTexto = (s) => {
@@ -192,12 +201,12 @@ export default function OfertasDia() {
                       <p className="product-description-centered">
                         {(() => {
                           const t = truncate(corregirTexto(prod.descripcion), 39)
-                          const parts = String(t).split(/(artesanal)/ig)
-                          return parts.map((p, i) => (
-                            /^artesanal$/i.test(p)
-                              ? <span key={i} className="text-orange-500">{p}</span>
-                              : <span key={i}>{p}</span>
-                          ))
+                          const parts = String(t).split(/(no\s+artesanal|artesanal)/ig)
+                          return parts.map((p, i) => {
+                            if (/^no\s+artesanal$/i.test(p)) return <span key={i} className="text-red-600 font-semibold">{p}</span>
+                            if (/^artesanal$/i.test(p)) return <span key={i} className="bg-green-600 text-white px-1 rounded">{p}</span>
+                            return <span key={i}>{p}</span>
+                          })
                         })()}
                       </p>
                       
