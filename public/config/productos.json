@@ -4,305 +4,299 @@
     "nombre": "Combo 1",
     "categoria": "combos",
     "precio": 8400,
-    "descripcion": "Hamburguesa (ARTEZANAL) comleta +  una lata de cerverza Brahma al mejor precio ",
-  "imagen": "altoke/1.png",
-  "imagenUrl": "altoke/1.png",
-  "popular": true,
-  "status": "combo",
-  "meta": ["hamburguesa","completo","cerveza","lata","artesanal"]
+    "descripcion": "Hamburguesa (ARTESANAL) completa + una lata de cerveza Brahma al mejor precio",
+    "imagen": "altoke/1.png",
+    "imagenUrl": "altoke/1.png",
+    "popular": true,
+    "status": "combo",
+    "meta": ["hamburguesa", "completo", "cerveza", "lata", "artesanal"]
   },
   {
-  
     "id": 3,
     "nombre": "Combo 3",
     "categoria": "combos",
     "precio": 14900,
-    "descripcion": "Hamburgesa (ARTEZANAL) 2 completa con adereso  + Lata de cerveza    ",
-  "imagen": "altoke/3.png",
-  "imagenUrl": "altoke/3.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["hamburguesa","completo","cerveza","lata"]
+    "descripcion": "Hamburguesa (ARTESANAL) completa con aderezo + Lata de cerveza",
+    "imagen": "altoke/3.png",
+    "imagenUrl": "altoke/3.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["hamburguesa", "completo", "cerveza", "lata"]
   },
   {
     "id": 4,
     "nombre": "Combo 4",
     "categoria": "combos",
     "precio": 3400,
-    "descripcion": "Pancho con aderezo + 1 Una lata de cerveza  brahma ",
-  "imagen": "altoke/4.png",
-  "imagenUrl": "altoke/4.png",
-  "popular": true,
-  "status": "combo",
-  "meta": ["pancho","completo","cerveza","lata"]
+    "descripcion": "Pancho con aderezo + 1 lata de cerveza Brahma",
+    "imagen": "altoke/4.png",
+    "imagenUrl": "altoke/4.png",
+    "popular": true,
+    "status": "combo",
+    "meta": ["pancho", "completo", "cerveza", "lata"]
   },
   {
     "id": 5,
     "nombre": "Combo 5",
     "categoria": "combos",
     "precio": 9400,
-    "descripcion": "Milaneza completo  o Napolitano + una lata de  Brahma",
-  "imagen": "altoke/5.png",
-  "imagenUrl": "altoke/5.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["milanesa","completo","cerveza","lata"]
+    "descripcion": "Milanesa completa o Napolitana + una lata de Brahma",
+    "imagen": "altoke/5.png",
+    "imagenUrl": "altoke/5.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["milanesa", "completo", "cerveza", "lata"]
   },
   {
     "id": 6,
     "nombre": "Combo 6",
     "categoria": "combos",
     "precio": 7800,
-    "descripcion": "Hamburguesa completa  con adereso + una lata de  coca cola",
-  "imagen": "altoke/6.png",
-  "imagenUrl": "altoke/6.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["hamburguesa","completo","gaseosa","coca","lata"]
+    "descripcion": "Hamburguesa completa con aderezo + una lata de Coca Cola",
+    "imagen": "altoke/6.png",
+    "imagenUrl": "altoke/6.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["hamburguesa", "completo", "gaseosa", "coca", "lata"]
   },
   {
     "id": 7,
     "nombre": "Combo 7",
     "categoria": "combos",
     "precio": 9300,
-    "descripcion": "Hamburguesa completa  con adereso + Pancho + una lata de  coca cola",
-  "imagen": "altoke/7.png",
-  "imagenUrl": "altoke/7.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["hamburguesa","completo","pancho","gaseosa","coca","lata"]
+    "descripcion": "Hamburguesa completa con aderezo + Pancho + una lata de Coca Cola",
+    "imagen": "altoke/7.png",
+    "imagenUrl": "altoke/7.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["hamburguesa", "completo", "pancho", "gaseosa", "coca", "lata"]
   },
-
-      {
+  {
     "id": 9,
     "nombre": "Combo 9",
     "categoria": "combos",
-     "precio": 8800,
-    "descripcion": "Milaneza completa  con adereso + una lata de  coca cola",
-  "imagen": "altoke/9.png",
-  "imagenUrl": "altoke/9.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["milanesa","completo","gaseosa","coca","lata"]
+    "precio": 8800,
+    "descripcion": "Milanesa completa con aderezo + una lata de Coca Cola",
+    "imagen": "altoke/9.png",
+    "imagenUrl": "altoke/9.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["milanesa", "completo", "gaseosa", "coca", "lata"]
   },
-      {
+  {
     "id": 10,
     "nombre": "Combo 10",
     "categoria": "combos",
     "precio": 2600,
-    "descripcion": "Super pancho con adereso + una lata de coca cola  ",
-  "imagen": "altoke/10.png",
-  "imagenUrl": "altoke/10.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["pancho","completo","gaseosa","coca","lata"]
+    "descripcion": "Super pancho con aderezo + una lata de Coca Cola",
+    "imagen": "altoke/10.png",
+    "imagenUrl": "altoke/10.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["pancho", "completo", "gaseosa", "coca", "lata"]
   },
-  
   {
     "id": 11,
     "nombre": "Combo 11",
     "categoria": "combos",
     "precio": 7500,
-    "descripcion": "Hamburgesa (ARTEZANAL) completa con adereso  + una lata de manaos  ",
-  "imagen": "altoke/11.png",
-  "imagenUrl": "altoke/11.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["hamburguesa","completo","gaseosa","manaos","lata","artesanal"]
+    "descripcion": "Hamburguesa (ARTESANAL) completa con aderezo + una lata de Manaos",
+    "imagen": "altoke/11.png",
+    "imagenUrl": "altoke/11.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["hamburguesa", "completo", "gaseosa", "manaos", "lata", "artesanal"]
   },
   {
     "id": 12,
     "nombre": "Combo 12",
     "categoria": "combos",
     "precio": 10100,
-    "descripcion": "Hamburgesa (ARTEZANAL) completa con adereso  + una botella de manaos 2.25Litros  ",
-  "imagen": "altoke/12.png",
-  "imagenUrl": "altoke/12.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["hamburguesa","completo","gaseosa","manaos","botella","artesanal"]
+    "descripcion": "Hamburguesa (ARTESANAL) completa con aderezo + una botella de Manaos de 2.25 litros",
+    "imagen": "altoke/12.png",
+    "imagenUrl": "altoke/12.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["hamburguesa", "completo", "gaseosa", "manaos", "botella", "artesanal"]
   },
- 
   {
     "id": 14,
     "nombre": "Combo 14",
     "categoria": "combos",
     "precio": 8500,
-    "descripcion": "Milaneza completo  o Napolitano + una lata de Manaos ",
-  "imagen": "altoke/14.png",
-  "imagenUrl": "altoke/14.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["milanesa","completo","gaseosa","manaos","lata"]
+    "descripcion": "Milanesa completa o Napolitana + una lata de Manaos",
+    "imagen": "altoke/14.png",
+    "imagenUrl": "altoke/14.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["milanesa", "completo", "gaseosa", "manaos", "lata"]
   },
   {
     "id": 15,
     "nombre": "Combo 15",
     "categoria": "combos",
-   "precio": 9500,
-    "descripcion": "Hamburgesa (ARTEZANAL) completa con adereso  + una lata de manaos  ",
-  "imagen": "altoke/15.png",
-  "imagenUrl": "altoke/15.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["hamburguesa","completo","gaseosa","manaos","lata","artesanal"]
+    "precio": 9500,
+    "descripcion": "Hamburguesa (ARTESANAL) completa con aderezo + una lata de Manaos",
+    "imagen": "altoke/15.png",
+    "imagenUrl": "altoke/15.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["hamburguesa", "completo", "gaseosa", "manaos", "lata", "artesanal"]
   },
   {
     "id": 16,
     "nombre": "Combo 16",
     "categoria": "combos",
     "precio": 3100,
-    "descripcion": "Super pancho con adereso + una manaos de  1.25 Litro ",
-  "imagen": "altoke/16.png",
-  "imagenUrl": "altoke/16.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["pancho","completo","gaseosa","manaos","botella"]
+    "descripcion": "Super pancho con aderezo + una Manaos de 1.25 litros",
+    "imagen": "altoke/16.png",
+    "imagenUrl": "altoke/16.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["pancho", "completo", "gaseosa", "manaos", "botella"]
   },
-
-
   {
     "id": 23,
     "nombre": "Art 23",
     "categoria": "Bebidas",
     "precio": 1600,
-    "descripcion": "Manasos 2.25 Litos",
-  "imagen": "altoke/23.png",
-  "imagenUrl": "altoke/23.png",
-  "popular": false,
-  "status": "art",
-  "meta": ["gaseosa","manaos","botella"]
+    "descripcion": "Manaos 2.25 litros",
+    "imagen": "altoke/23.png",
+    "imagenUrl": "altoke/23.png",
+    "popular": false,
+    "status": "art",
+    "meta": ["gaseosa", "manaos", "botella"]
   },
   {
     "id": 24,
     "nombre": "Combo 24",
     "categoria": "combos",
     "precio": 10500,
-    "descripcion": "Pizza Musarela  Aceiturnas + Manasos 2.25 Litros",
-  "imagen": "altoke/24.png",
-  "imagenUrl": "altoke/24.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["pizza","gaseosa","manaos","aceitunas"]
+    "descripcion": "Pizza Muzzarella con aceitunas + Manaos 2.25 litros",
+    "imagen": "altoke/24.png",
+    "imagenUrl": "altoke/24.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["pizza", "gaseosa", "manaos", "aceitunas"]
   },
- 
-   {
+  {
     "id": 27,
     "nombre": "Combo 26",
     "categoria": "combos",
     "precio": 12000,
-    "descripcion": "Pizza Muza + Brahma 1L",
-  "imagen": "altoke/27.png",
-  "imagenUrl": "altoke/27.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["pizza","cerveza","brahma","botella"]
+    "descripcion": "Pizza Muzza + Brahma 1L",
+    "imagen": "altoke/27.png",
+    "imagenUrl": "altoke/27.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["pizza", "cerveza", "brahma", "botella"]
   },
-
   {
     "id": 28,
     "nombre": "Combo 28",
     "categoria": "combos",
     "precio": 15800,
     "descripcion": "Milanesa completa + Hamburguesa + Manaos 2.25 litros",
-  "imagen": "altoke/28.png",
-  "imagenUrl": "altoke/28.png",
-  "popular": false,
-  "status": "combo",
-  "meta": ["milanesa","hamburguesa","gaseosa","manaos","completo"]
+    "imagen": "altoke/28.png",
+    "imagenUrl": "altoke/28.png",
+    "popular": false,
+    "status": "combo",
+    "meta": ["milanesa", "hamburguesa", "gaseosa", "manaos", "completo"]
   },
-
   {
     "id": 30,
     "nombre": "Combo 30",
     "categoria": "combos",
     "precio": 0.0,
     "descripcion": "",
-  "imagen": "altoke/30.png",
-  "imagenUrl": "altoke/30.png",
-  "popular": false,
-  "status": "combo",
-  "meta": []
+    "imagen": "altoke/30.png",
+    "imagenUrl": "altoke/30.png",
+    "popular": false,
+    "status": "combo",
+    "meta": []
   },
   {
     "id": 32,
     "nombre": "Art 32",
     "categoria": "Unidad",
     "precio": 3300,
-    "descripcion": "Hamburgesa Simple (NO ARTESANAL ) ",
-  "imagen": "altoke/32.png",
-  "imagenUrl": "altoke/32.png",
-  "popular": false,
-  "status": "oferta",
-  "meta": ["hamburguesa","simple"]
-  },{
+    "descripcion": "Hamburguesa Simple (NO ARTESANAL)",
+    "imagen": "altoke/32.png",
+    "imagenUrl": "altoke/32.png",
+    "popular": false,
+    "status": "oferta",
+    "meta": ["hamburguesa", "simple"]
+  },
+  {
     "id": 33,
     "nombre": "Art 33",
     "categoria": "Unidad",
     "precio": 4300,
-    "descripcion": "Hamburgesa LyT (NO ARTESANAL )",
-  "imagen": "altoke/33.png",
-  "imagenUrl": "altoke/33.png",
-  "popular": false,
-  "status": "oferta",
-  "meta": ["hamburguesa","lyt"]
+    "descripcion": "Hamburguesa LyT (NO ARTESANAL)",
+    "imagen": "altoke/33.png",
+    "imagenUrl": "altoke/33.png",
+    "popular": false,
+    "status": "oferta",
+    "meta": ["hamburguesa", "lyt"]
   },
   {
     "id": 34,
     "nombre": "Art 34",
     "categoria": "Unidad",
     "precio": 4300,
-    "descripcion": "Hamburgesa Con Chedar (NO ARTESANAL )",
-  "imagen": "altoke/34.png",
-  "imagenUrl": "altoke/34.png",
-  "popular": false,
-  "status": "oferta",
-  "meta": ["hamburguesa","cheddar"]
+    "descripcion": "Hamburguesa con Cheddar (NO ARTESANAL)",
+    "imagen": "altoke/34.png",
+    "imagenUrl": "altoke/34.png",
+    "popular": false,
+    "status": "oferta",
+    "meta": ["hamburguesa", "cheddar"]
   },
   {
     "id": 35,
     "nombre": "Art 35",
     "categoria": "Unidad",
     "precio": 5300,
-    "descripcion": "Hamburgesa JyQ (NO ARTESANAL )",
-  "imagen": "altoke/35.png",
-  "imagenUrl": "altoke/35.png",
-  "popular": false,
-  "status": "art",
-  "meta": ["hamburguesa","jyq","jamon","queso"]
-  },{
+    "descripcion": "Hamburguesa JyQ (NO ARTESANAL)",
+    "imagen": "altoke/35.png",
+    "imagenUrl": "altoke/35.png",
+    "popular": false,
+    "status": "art",
+    "meta": ["hamburguesa", "jyq", "jamon", "queso"]
+  },
+  {
     "id": 36,
     "nombre": "Art 36",
     "categoria": "Unidad",
     "precio": 1200,
-    "descripcion": "Placer  1.5L jugo bebida  de pomelo",
-  "imagen": "altoke/36.png",
-  "imagenUrl": "altoke/36.png",
-  "popular": false,
-  "status": "art",
-  "meta": ["jugo","bebida","pomelo"]
-  },{
+    "descripcion": "Placer 1.5L jugo bebida de pomelo",
+    "imagen": "altoke/36.png",
+    "imagenUrl": "altoke/36.png",
+    "popular": false,
+    "status": "art",
+    "meta": ["jugo", "bebida", "pomelo"]
+  },
+  {
     "id": 37,
-    "nombre": "Art37",
+    "nombre": "Art 37",
     "categoria": "Unidad",
     "precio": 2700,
-    "descripcion": "Schneider  Lata cerveza premium",
-  "imagen": "altoke/37.png",
-  "imagenUrl": "altoke/37.png",
-  "popular": false,
-  "status": "art",
-  "meta": ["cerveza","lata","schneider"]
-  },{
+    "descripcion": "Schneider Lata cerveza premium",
+    "imagen": "altoke/37.png",
+    "imagenUrl": "altoke/37.png",
+    "popular": false,
+    "status": "art",
+    "meta": ["cerveza", "lata", "schneider"]
+  },
+  {
     "id": 38,
-    "nombre": "Art38",
+    "nombre": "Art 38",
     "categoria": "Unidad",
     "precio": 3000,
-    "descripcion": "Brahma 1L   cerveza fria ",
-  "imagen": "altoke/38.png",
-  "imagenUrl": "altoke/38.png",
-  "popular": false,
-  "status": "art",
-  "meta": ["cerveza","botella","brahma"]
+    "descripcion": "Brahma 1L cerveza fría",
+    "imagen": "altoke/38.png",
+    "imagenUrl": "altoke/38.png",
+    "popular": false,
+    "status": "art",
+    "meta": ["cerveza", "botella", "brahma"]
   }
-
 ]
