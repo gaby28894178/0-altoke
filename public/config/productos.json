@@ -298,5 +298,29 @@
     "popular": false,
     "status": "articulos",
     "meta": ["cerveza", "botella", "brahma"]
+  },
+  {
+    "id": 39,
+    "nombre": "Art 40",
+    "categoria": "Bebidas",
+    "precio": 3000,
+    "descripcion": "Frizze blue",
+    "imagen": "altoke/39.png",
+    "imagenUrl": "altoke/39.png",
+    "popular": false,
+    "status": "articulos",
+    "meta": ["cerveza", "botella", "brahma"]
+  },
+  {
+    "id": 40,
+    "nombre": "Art 40",
+    "categoria": "Bebidas",
+    "precio": 1600,
+    "descripcion": "Lata Speed",
+    "imagen": "altoke/40.png",
+    "imagenUrl": "altoke/40.png",
+    "popular": false,
+    "status": "articulos",
+    "meta": ["cerveza", "botella", "brahma"]
   }
 ]
